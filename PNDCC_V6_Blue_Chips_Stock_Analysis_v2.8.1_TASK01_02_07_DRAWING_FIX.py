@@ -545,7 +545,7 @@ function initChartDrawTools(symbol){
   const parent=svg.parentElement;if(!parent)return;let wrap=parent;
   if(!parent.classList.contains('chart-interactive')){wrap=document.createElement('div');wrap.className='chart-interactive';parent.insertBefore(wrap,svg);wrap.appendChild(svg)}
   const key=keyFor(svg,i); // Define the key before assigning it to the overlay (the old order threw a TDZ error).
-  wrap.querySelectorAll(':scope > .chart-draw-overlay').forEach(old=>old.remove());
+  wrap.querySelectorAll(':scope > .chart-draw-overlay, :scope > .chart-context-menu').forEach(old=>old.remove());
   const overlay=document.createElementNS('http://www.w3.org/2000/svg','svg');overlay.setAttribute('class','chart-draw-overlay');overlay.dataset.drawingKey=key;overlay.setAttribute('viewBox',`${vx} ${vy} ${vw} ${vh}`);overlay.setAttribute('preserveAspectRatio',svg.getAttribute('preserveAspectRatio')||'xMidYMid meet');overlay.setAttribute('aria-label','Editable chart drawing overlay');overlay.dataset.mode=currentMode();wrap.appendChild(overlay);svg.dataset.drawReady='1';
   if(!drawingStore.has(key))drawingStore.set(key,[]);const shapes=drawingStore.get(key);let selected=-1,drag=null,start=null,preview=null;
   const pos=e=>{const pt=overlay.createSVGPoint();pt.x=e.clientX;pt.y=e.clientY;const m=overlay.getScreenCTM();if(!m)return {x:0,y:0};const q=pt.matrixTransform(m.inverse());return {x:q.x,y:q.y}};
