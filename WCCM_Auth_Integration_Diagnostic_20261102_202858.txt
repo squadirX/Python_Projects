@@ -1,0 +1,78 @@
+============================================================
+WCCM WINDOWS AUTHENTICATION INTEGRATION DIAGNOSTIC
+Generated: Mon  2 Nov 2026 20:28:58 EST
+Mac: x’s MacBook Pro
+============================================================
+
+===== 1. REQUIRED FILES =====
+FOUND: /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P6_Cumulative_Dashboard/mac/wccm_mac_dashboard_p6.py
+Size: 176835 bytes | Modified: Nov  1 19:32:10 2026
+56019b221dbca6aae65552c9b3e596bd31fb29e836fd76be04a187f3c4745643  /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P6_Cumulative_Dashboard/mac/wccm_mac_dashboard_p6.py
+MISSING: /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P6_Cumulative_Dashboard/mac/wccm_windows_security_collector.py
+MISSING: /Users/x/Library/Application Support/WCCM/windows_security_collector_state.json
+MISSING: /Users/x/Library/LaunchAgents/com.saiful.wccm-windows-security-collector.plist
+MISSING: /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P4_Application_Control_Prototype/mac/config.json
+FOUND: /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P2_Health_Status_Prototype/mac/config.json
+Size: 120 bytes | Modified: Oct 28 15:57:19 2026
+dd0ddae6ad0dc63a3911fd6c64f28e46bb31dba4aee1b692042fd46795ff0f5b  /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P2_Health_Status_Prototype/mac/config.json
+
+===== 2. PROTECTED / ACTIVE PORTS =====
+--- PORT 8765 ---
+NOT LISTENING
+--- PORT 8770 ---
+COMMAND   PID USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+Python  82099    x    4u  IPv4 0x933e658a2a8fd4bb      0t0  TCP 127.0.0.1:8770 (LISTEN)
+--- PORT 8815 ---
+COMMAND PID USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+Python  885    x    4u  IPv4 0xe09574fa0be3bfd2      0t0  TCP 127.0.0.1:8815 (LISTEN)
+--- PORT 8816 ---
+NOT LISTENING
+--- PORT 8817 ---
+NOT LISTENING
+--- PORT 18820 ---
+NOT LISTENING
+--- PORT 18821 ---
+COMMAND PID USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+Python  943    x    4u  IPv4 0xebbbe793b3ab7865      0t0  TCP 127.0.0.1:18821 (LISTEN)
+--- PORT 18823 ---
+COMMAND PID USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+Python  992    x    4u  IPv4 0x947b0af1aca177d2      0t0  TCP 127.0.0.1:18823 (LISTEN)
+--- PORT 8787 ---
+COMMAND PID USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+Python  835    x    5u  IPv4 0xec74c84bfbace15f      0t0  TCP *:8787 (LISTEN)
+
+===== 3. LAUNCHAGENT STATUS =====
+Bad request.
+Could not find service "com.saiful.wccm-windows-security-collector" in domain for user gui: 501
+
+===== 4. COLLECTOR CHECKPOINT =====
+No checkpoint file.
+
+===== 5. COLLECTOR LOG (LAST 30 LINES) =====
+No collector log.
+
+===== 6. WINDOWS AGENT + SIEM + DASHBOARD API PROBES =====
+WINDOWS CONFIG: found host=192.168.2.162, port=8765; token withheld
+WINDOWS AUTH ENDPOINT: HTTP 404
+WINDOWS AGENT HEALTH: ERROR URLError: <urlopen error [Errno 61] Connection refused>
+INTEGRATED SIEM STATUS: HTTP 200
+  keys: ['app', 'version', 'host', 'port', 'events_retained', 'open_critical_high', 'new_critical_high', 'events_last_24h', 'real_source_events_retained', 'synthetic_test_events_retained', 'synthetic_test_events_last_24h', 'mixed_source_events_retained', 'detection_alerts_retained', 'synthetic_detection_alerts', 'open_critical_high_test_data', 'devices_observed', 'windows_events', 'synthetic_windows_events', 'last_macos_collection', 'last_macos_error', 'last_macos_result', 'macos_status', 'macos_note', 'wazuh_status', 'cloud_status', 'local_only', 'retention_limit']
+READ-ONLY ADAPTER HEALTH: HTTP 200
+  keys: ['ok', 'mode', 'upstream']
+  ok: True
+WCCM LOGIN ACCESS DASHBOARD: HTTP 200
+  keys: ['status', 'source', 'period', 'period_label', 'range_start_utc', 'range_end_utc', 'returned_event_count', 'strict_real_windows_auth_records', 'authentication_events_count', 'failed_logins_count', 'successful_logins_count', 'interactive_success_count', 'service_logon_count', 'system_logon_count', 'other_success_count', 'logon_type_counts', 'latest_source_event_timestamp', 'latest_event_age_hours', 'source_freshness', 'collector_health', 'adapter_status', 'retention_oldest_timestamp', 'retention_note']
+  status: ok
+ADAPTER LIVE EVENTS: HTTP 200
+  keys: ['events', 'count']
+  count: 5
+
+===== 7. RUNNING RELATED PROCESSES =====
+  885 07:49:07 /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python /Users/x/Downloads/PNDCC_SIEM_Standalone_Dashboard_V3_4_3_SECURITY_HARDENING_CANDIDATE.py
+  943 07:48:48 /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python /Users/x/Downloads/PNDCC_SIEM_V3_4_3_INTEGRATED_CANDIDATE_18821.py
+  992 07:48:25 /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python /Users/x/Downloads/PNDCC_SIEM_READONLY_INFOGRAPHIC_DASHBOARD_18823.py
+82099 02:17:46 /Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P6_Cumulative_Dashboard/mac/wccm_mac_dashboard_p6.py
+
+===== 8. END OF REPORT =====
+No service was restarted. No source or checkpoint was modified.
+Secrets were intentionally excluded.
