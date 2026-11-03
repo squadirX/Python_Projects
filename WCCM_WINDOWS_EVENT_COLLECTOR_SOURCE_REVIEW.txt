@@ -1,0 +1,1648 @@
+WCCM WINDOWS EVENT COLLECTOR — READ-ONLY SOURCE REVIEW
+========================================================================
+Generated: 2026-11-02T19:03:06.214661-05:00
+Root: /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM
+Files inventoried: 25
+Scope: source/config inventory, hashes, relevant source excerpts.
+Safety: no source edits, no service/network actions, no credential-store access.
+Excluded: .env files, Keychain, credential stores, caches, dependencies.
+
+SECTION 1 — SOURCE FILE INVENTORY AND SHA-256
+------------------------------------------------------------------------
+d66697a6988cd593d91506d7aaa67119bbc25fdca0ed99e10d1f1b1b6f3f3365  /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P2_Health_Status_Prototype/mac/Import-Windows-Agent-Config.sh
+eb81db9c432173c8fc7e7aad8ed265d0ad564b84ca364b60ed344576b2f9418b  /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P2_Health_Status_Prototype/mac/wccm_mac_dashboard.py
+3ce42864d433cfe72dce9b0fecc9f836aafcfb61df70960706013469839e59fa  /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P2_Health_Status_Prototype/windows/Install-WCCM-Agent.ps1
+cce651f9f80e1c552e8777bfa723265fea6ad96bc8aebb1d97cee7501c81a34d  /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P2_Health_Status_Prototype/windows/wccm_windows_agent.ps1
+9e672debd6b593b182493009947eba4b20595de68bec6aa3ed2547c70eb2b906  /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P3_Application_Inventory_Prototype/mac/wccm_mac_dashboard.py
+253b9a825d7a93c5a48f76ce302988728ece20ddb01a1fc687d8e2bbf5e9607c  /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P3_Application_Inventory_Prototype/tests/test_dashboard.py
+c7d869c28b2cfa7d4d8c3fad260bd00d304071cfa88c49520738a44f3852af40  /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P3_Application_Inventory_Prototype/windows/Update-WCCM-Agent.ps1
+6b14001b5e4cfaba34183ded0626e9c766c919d44a625fa3080f12d3a753c300  /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P3_Application_Inventory_Prototype/windows/wccm_windows_agent.ps1
+f3c366ca3092f4dd7ed210ea741fc958426a22ec1427484ff2ff4620a1d77dd1  /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P4_Application_Control_Prototype/mac/wccm_mac_dashboard_p4.py
+b3f4d3a58b6f04f710ac5e989d4e3bf748a7892e6c63eacff82f2040318bd841  /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P4_Application_Control_Prototype/tests/test_dashboard_p4.py
+72ee90fd0219da73215637c41cb305c6e8324ff7db0e3257a8f20f18ce9e6a84  /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P4_Application_Control_Prototype/windows/Update-WCCM-Agent-P4.ps1
+d6f61cdd64faa7fba50cd9a2d8f747765349cb8cb100c8c5a9b1d438a9dfac21  /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P4_Application_Control_Prototype/windows/wccm_windows_agent_p4.ps1
+68c3ec3e8c53ba7efe47a6967849960592390f1f6421133910253acdd110126c  /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P5_Save_Review_Prototype/mac/wccm_mac_dashboard_p5.py
+c335bd63fa30711439a578cdcd5fda85b9c67e09973b1787e1bdbdeaa65f41e3  /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P5_Save_Review_Prototype/tests/test_dashboard_p5.py
+56019b221dbca6aae65552c9b3e596bd31fb29e836fd76be04a187f3c4745643  /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P6_Cumulative_Dashboard/mac/wccm_mac_dashboard_p6.py
+83fc2ea5145febe15873267c38333505080211f04f2bdeb5d6c6c2b964bf597a  /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P6_Cumulative_Dashboard/mac/wccm_mac_dashboard_p6_DEFENDER_READONLY_CANDIDATE.py
+83fc2ea5145febe15873267c38333505080211f04f2bdeb5d6c6c2b964bf597a  /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P6_Cumulative_Dashboard/mac/wccm_mac_dashboard_p6_DEFENDER_STAGED_20261101T203239Z.py
+4770fea68882b932df0b8a34d0d34f8efa74564eeae37cb7adb021305b2d2179  /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P6_Cumulative_Dashboard/WCCM_P6_Cumulative_Dashboard_Candidate/mac/wccm_mac_dashboard_p6.py
+aa65f07a5e7a486f2eecfcd2366ab66fb1f377fd568b7e1892eefb8544813f5e  /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P6_Cumulative_Dashboard/WCCM_P6_Cumulative_Dashboard_Candidate/windows/wccm_windows_agent_p6.ps1
+d4f8f70511a4c6f63dae8f8138791ae487c33b5c22936cc25a34be5c30fef070  /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P6_Cumulative_Dashboard/windows/Update-WCCM-Agent-P6.ps1
+aa65f07a5e7a486f2eecfcd2366ab66fb1f377fd568b7e1892eefb8544813f5e  /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P6_Cumulative_Dashboard/windows/wccm_windows_agent_p6.ps1
+
+SECTION 2 — CONFIG FILE INVENTORY (HASH ONLY; CONTENT NOT READ)
+------------------------------------------------------------------------
+1ec8d4759018124e82b9133a08348874b1d8eece281bb99014ff4ca49edd3a0a  /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P2_Health_Status_Prototype/mac/config.example.json
+dd0ddae6ad0dc63a3911fd6c64f28e46bb31dba4aee1b692042fd46795ff0f5b  /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P2_Health_Status_Prototype/mac/config.json
+4897c3eff91dc4de11da748b1048a1d96cab20686be578c34bd69d081173d770  /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P5_Save_Review_Prototype/data/review_state.json
+53748ffdebf059e9b4300919a31ab0cda61ce437ba22f6a57d8ef4be7d23926a  /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P5_Save_Review_Prototype/data/review_state_backup_20261029_161930.json
+
+SECTION 3 — RELEVANT SOURCE EXCERPTS
+------------------------------------------------------------------------
+
+FILE: /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P2_Health_Status_Prototype/mac/Import-Windows-Agent-Config.sh
+SHA256: d66697a6988cd593d91506d7aaa67119bbc25fdca0ed99e10d1f1b1b6f3f3365
+LINES: 45 | MATCHES: 1
+
+--- lines 26-40 ---
+   26: 
+   27: SOURCE="${CANDIDATES[0]}"
+   28: python3 - "$SOURCE" <<'PY'
+   29: import json, sys
+   30: with open(sys.argv[1], "r", encoding="utf-8-sig") as f:
+   31:     cfg=json.load(f)
+   32: assert cfg.get("windows_host"), "windows_host is missing"
+   33: assert int(cfg.get("windows_port", 0)) == 8765, "unexpected Windows agent port"
+   34: assert len(str(cfg.get("token", ""))) >= 40, "token missing or too short"
+   35: print("Windows host in config:", cfg["windows_host"])
+   36: print("Agent port in config:", cfg["windows_port"])
+   37: print("Token validated (value not shown).")
+   38: PY
+   39: 
+   40: cp "$SOURCE" "$DEST"
+
+FILE: /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P2_Health_Status_Prototype/mac/wccm_mac_dashboard.py
+SHA256: eb81db9c432173c8fc7e7aad8ed265d0ad564b84ca364b60ed344576b2f9418b
+LINES: 165 | MATCHES: 16
+
+--- lines 1-18 ---
+    1: #!/usr/bin/env python3
+    2: """WCCM Mac Dashboard - Phase P2 (read-only Windows health/status)."""
+    3: from __future__ import annotations
+    4: 
+    5: import argparse
+    6: import json
+    7: import threading
+    8: import urllib.error
+    9: import urllib.request
+   10: import webbrowser
+   11: from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+   12: from pathlib import Path
+   13: from typing import Any
+   14: 
+   15: DASHBOARD_VERSION = "0.1.0"
+   16: HTML = r'''<!doctype html>
+   17: <html lang="en">
+   18: <head>
+
+--- lines 22-77 ---
+   22: :root{color-scheme:light dark;--bg:#f4f6f8;--panel:#fff;--ink:#17202b;--muted:#657181;--line:#d9e0e7;--accent:#245bb5;--good:#157347;--warn:#986400;--bad:#b42318}
+   23: @media(prefers-color-scheme:dark){:root{--bg:#101419;--panel:#1a2028;--ink:#edf2f7;--muted:#a0acba;--line:#303a46;--accent:#8ab4f8}}
+   24: *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+   25: main{max-width:1050px;margin:36px auto;padding:0 20px}.top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}.eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}h1{margin:5px 0 3px;font-size:clamp(25px,4vw,36px);line-height:1.15}p{margin:0;color:var(--muted)}button{border:0;border-radius:10px;padding:11px 16px;background:var(--accent);color:#fff;font-weight:650;cursor:pointer}button:disabled{opacity:.5;c
+   26: @media(max-width:720px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:460px){.grid{grid-template-columns:1fr}}
+   27: </style></head>
+   28: <body><main>
+   29: <div class="top"><div><div class="eyebrow">WCCM · Phase P2</div><h1>Windows Control Center for Mac</h1><p>Windows health and status · Read-only prototype</p></div><div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><span id="statusPill" class="pill"><span class="dot"></span><span id="statusText">CHECKING</span></span><button id="refreshButton" onclick="loadStatus()">Refresh status</button></div></div>
+   30: <div class="notice">Read-only mode: this dashboard does not launch or close applications and cannot restart, shut down, or otherwise control the Windows PC. The Windows screen remains on the Windows laptop unless you separately open Remote Desktop.</div>
+   31: <h2 class="section">PC Overview</h2><div class="grid">
+   32: <div class="card"><div class="label">Computer</div><div class="value" id="computerName">—</div><div class="detail" id="ipAddresses">Waiting for agent…</div></div>
+   33: <div class="card"><div class="label">Operating System</div><div class="value" id="osVersion">—</div><div class="detail" id="architecture">—</div></div>
+   34: <div class="card"><div class="label">Uptime</div><div class="value" id="uptime">—</div><div class="detail" id="bootTime">—</div></div>
+   35: <div class="card"><div class="label">Signed-in User</div><div class="value" id="currentUser">—</div><div class="detail">Agent runs as the current Windows user</div></div>
+   36: <div class="card"><div class="label">Memory</div><div class="value" id="memoryUsed">—</div><div class="detail" id="memoryDetail">—</div></div>
+   37: <div class="card"><div class="label">System Drive</div><div class="value" id="diskFree">—</div><div class="detail" id="diskDetail">—</div></div>
+   38: <div class="card"><div class="label">Remote Desktop Listener</div><div class="value" id="rdpStatus">—</div><div class="detail">Local TCP 3389 check from Windows</div></div>
+   39: <div class="card"><div class="label">Agent</div><div class="value" id="agentVersion">—</div><div class="detail" id="lastUpdated">—</div></div>
+   40: </div><div class="footer">Local Mac dashboard: 127.0.0.1 · Auto-refresh every 15 seconds · No data is sent to a cloud service.</div>
+   41: </main>
+   42: <script>
+   43: function text(id,v){document.getElementById(id).textContent=(v===null||v===undefined||v==="")?"—":String(v)}
+   44: function fmtBytes(n){if(n===null||n===undefined)return "—";const units=["B","GB","TB"];let v=n/1073741824; if(v>=1024)return (v/1024).toFixed(2)+" TB";return v.toFixed(1)+" GB"}
+   45: function fmtDuration(s){if(s===null||s===undefined)return "—";s=Math.max(0,Math.floor(s));const d=Math.floor(s/86400);s%=86400;const h=Math.floor(s/3600);s%=3600;const m=Math.floor(s/60);if(d)return `${d}d ${h}h ${m}m`;if(h)return `${h}h ${m}m`;return `${m}m`}
+   46: async function loadStatus(){const btn=document.getElementById("refreshButton");btn.disabled=true;try{const r=await fetch("/api/status?ts="+Date.now(),{cache:"no-store"});const d=await r.json();if(!r.ok||d.status!=="ONLINE")throw new Error(d.message||d.error||"Windows agent is unreachable");document.getElementById("statusPill").className="pill online";text("statusText",d.uptime_seconds!==null&&d.uptime_seconds<120?"RECENTLY STARTED":"ONLINE");text("computerName",d.computer_name);text("ipAddresses
+   47: loadStatus();setInterval(loadStatus,15000);
+   48: </script></body></html>'''
+   49: 
+   50: 
+   51: def load_config(path: Path) -> dict[str, Any]:
+   52:     if not path.is_file():
+   53:         raise FileNotFoundError(
+   54:             f"Configuration file not found: {path}\n"
+   55:             "Copy config.example.json to config.json, then enter the Windows agent token from the installer."
+   56:         )
+   57:     with path.open("r", encoding="utf-8-sig") as handle:
+   58:         config = json.load(handle)
+   59:     host = str(config.get("windows_host", "")).strip()
+   60:     port = int(config.get("windows_port", 8765))
+   61:     token = str(config.get("token", "")).strip()
+   62:     if not host or not token or "REPLACE_WITH_TOKEN" in token:
+   63:         raise ValueError("mac/config.json must contain windows_host, windows_port, and the real Windows agent token.")
+   64:     if not (1 <= port <= 65535):
+   65:         raise ValueError("windows_port is invalid.")
+   66:     return {"windows_host": host, "windows_port": port, "token": token}
+   67: 
+   68: 
+   69: class DashboardServer(ThreadingHTTPServer):
+   70:     daemon_threads = True
+   71:     allow_reuse_address = True
+   72: 
+   73:     def __init__(self, address: tuple[str, int], config: dict[str, Any]):
+   74:         self.config = config
+   75:         super().__init__(address, DashboardHandler)
+   76: 
+   77: 
+
+--- lines 96-119 ---
+   96:     def do_GET(self) -> None:  # noqa: N802
+   97:         if self.path == "/" or self.path.startswith("/?"):
+   98:             self.send_bytes(200, "text/html; charset=utf-8", HTML.encode("utf-8"))
+   99:             return
+  100:         if self.path.startswith("/api/status"):
+  101:             cfg = self.server.config
+  102:             url = f"http://{cfg['windows_host']}:{cfg['windows_port']}/api/health"
+  103:             request = urllib.request.Request(
+  104:                 url,
+  105:                 headers= [REDACTED]
+  106:                 method="GET",
+  107:             )
+  108:             try:
+  109:                 with urllib.request.urlopen(request, timeout=3.0) as response:
+  110:                     raw = response.read(64 * 1024)
+  111:                     self.send_bytes(response.status, "application/json; charset=utf-8", raw)
+  112:             except urllib.error.HTTPError as exc:
+  113:                 body = json.dumps({"status": "UNREACHABLE", "error": f"Windows agent returned HTTP {exc.code}"}).encode()
+  114:                 self.send_bytes(200, "application/json; charset=utf-8", body)
+  115:             except Exception as exc:
+  116:                 body = json.dumps({"status": "UNREACHABLE", "message": f"Cannot reach Windows agent at {cfg['windows_host']}:{cfg['windows_port']}. Check that the Windows agent is running and the firewall allows the local network."}).encode()
+  117:                 self.send_bytes(200, "application/json; charset=utf-8", body)
+  118:             return
+  119:         self.send_bytes(404, "application/json; charset=utf-8", b'{"error":"not_found"}')
+
+--- lines 147-163 ---
+  147:     url = f"http://127.0.0.1:{args.port}/"
+  148:     print("WCCM — Windows Control Center for Mac")
+  149:     print(f"Dashboard: {url}")
+  150:     print(f"Windows PC: {config['windows_host']}:{config['windows_port']}")
+  151:     print("Phase P2 is read-only. No remote actions are available.")
+  152:     print("Press Ctrl+C in this Terminal window to stop the dashboard.")
+  153:     if not args.no_browser:
+  154:         threading.Timer(0.8, lambda: webbrowser.open(url)).start()
+  155:     try:
+  156:         server.serve_forever(poll_interval=0.5)
+  157:     except KeyboardInterrupt:
+  158:         print("\nStopping WCCM dashboard...")
+  159:     finally:
+  160:         server.server_close()
+  161:     return 0
+  162: 
+  163: 
+
+FILE: /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P2_Health_Status_Prototype/windows/Install-WCCM-Agent.ps1
+SHA256: 3ce42864d433cfe72dce9b0fecc9f836aafcfb61df70960706013469839e59fa
+LINES: 135 | MATCHES: 8
+
+--- lines 1-17 ---
+    1: $ErrorActionPreference = "Stop"
+    2: 
+    3: Write-Output "`n===== WCCM WINDOWS AGENT INSTALLER - PHASE P2 ====="
+    4: Write-Output "PowerShell-only, read-only health/status. No Python dependency on Windows."
+    5: 
+    6: $Principal = New-Object Security.Principal.WindowsPrincipal(
+    7:     [Security.Principal.WindowsIdentity]::GetCurrent()
+    8: )
+    9: if (-not $Principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) {
+   10:     throw "Open PowerShell using Run as administrator, then run this installer again."
+   11: }
+   12: 
+   13: $WifiProfile = Get-NetConnectionProfile -ErrorAction SilentlyContinue |
+   14:     Where-Object { $_.InterfaceAlias -eq "Wi-Fi" -and $_.IPv4Connectivity -ne "Disconnected" } |
+   15:     Select-Object -First 1
+   16: if (-not $WifiProfile) { throw "Active Wi-Fi profile not found. No installation performed." }
+   17: if ($WifiProfile.NetworkCategory -ne "Private") {
+
+--- lines 43-67 ---
+   43: }
+   44: 
+   45: $SourceAgent = Join-Path $PSScriptRoot "wccm_windows_agent.ps1"
+   46: if (-not (Test-Path -LiteralPath $SourceAgent)) {
+   47:     throw "wccm_windows_agent.ps1 is missing beside the installer. Extract the complete windows folder before running."
+   48: }
+   49: 
+   50: $Port = 8765
+   51: $ExistingListener = @(Get-NetTCPConnection -LocalPort $Port -State Listen -ErrorAction SilentlyContinue)
+   52: if ($ExistingListener.Count -gt 0) {
+   53:     throw "TCP $Port is already listening. Installer stopped to avoid changing another application's firewall posture."
+   54: }
+   55: 
+   56: New-Item -ItemType Directory -Path $InstallDir -Force | Out-Null
+   57: $AgentPath = Join-Path $InstallDir "wccm_windows_agent.ps1"
+   58: Copy-Item -LiteralPath $SourceAgent -Destination $AgentPath -Force
+   59: 
+   60: # Generate a 256-bit random bearer [REDACTED]
+   61: $RandomBytes = New-Object byte[] 32
+   62: $Rng = [Security.Cryptography.RandomNumberGenerator]::Create()
+   63: try { $Rng.GetBytes($RandomBytes) } finally { $Rng.Dispose() }
+   64: $Token = [Convert]::ToBase64String($RandomBytes).TrimEnd('=').Replace('+','-').Replace('/','_')
+   65: 
+   66: $AgentConfig = @{
+   67:     token = $Token
+
+--- lines 94-115 ---
+   94:     }
+   95: }
+   96: 
+   97: $StartCmd = Join-Path $InstallDir "Start-WCCM-Agent.cmd"
+   98: $CmdText = @"
+   99: @echo off
+  100: setlocal
+  101: "%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -ExecutionPolicy Bypass -File "$AgentPath"
+  102: if errorlevel 1 echo WCCM Agent exited with an error. Review the message above.
+  103: pause
+  104: "@
+  105: Set-Content -LiteralPath $StartCmd -Value $CmdText -Encoding ASCII
+  106: 
+  107: # Replace only the WCCM-owned rule. Never disable Windows Firewall.
+  108: $RuleName = "WCCM-Health-Agent-TCP-8765"
+  109: Get-NetFirewallRule -Name $RuleName -ErrorAction SilentlyContinue |
+  110:     Remove-NetFirewallRule
+  111: New-NetFirewallRule `
+  112:     -Name $RuleName `
+  113:     -DisplayName "WCCM Health Agent - Private LAN only" `
+  114:     -Enabled True `
+  115:     -Direction Inbound `
+
+--- lines 121-135 ---
+  121: 
+  122: Write-Output "`n===== INSTALLATION COMPLETE ====="
+  123: Write-Output "Agent directory: $InstallDir"
+  124: Write-Output "Start command: $StartCmd"
+  125: Write-Output "Mac configuration file: $MacConfigDesktopPath"
+  126: if ($TransferPath) { Write-Output "Temporary transfer copy: $TransferPath" }
+  127: Write-Output "Firewall rule: $RuleName (Private profile, LocalSubnet only)"
+  128: Write-Output "No application control, restart, shutdown, arbitrary command endpoint, service, or scheduled task was installed."
+  129: Write-Output "`nKeep the generated config/token private. Do not paste it into chat."
+  130: 
+  131: $Launch = Read-Host "Start the read-only agent now? Type START or press Enter to skip"
+  132: if ($Launch -ceq "START") {
+  133:     Start-Process -FilePath $StartCmd
+  134:     Write-Output "Agent launch requested. Keep the agent console window open while testing."
+  135: }
+
+FILE: /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P2_Health_Status_Prototype/windows/wccm_windows_agent.ps1
+SHA256: cce651f9f80e1c552e8777bfa723265fea6ad96bc8aebb1d97cee7501c81a34d
+LINES: 209 | MATCHES: 1
+
+--- lines 183-197 ---
+  183:             }
+  184:             elseif ($Method -ne "GET") {
+  185:                 Write-JsonResponse -Stream $Stream -StatusCode 405 -Reason "Method Not Allowed" -Payload @{ error = "method_not_allowed"; mode = "read_only" }
+  186:             }
+  187:             elseif ($Path -ne "/api/health") {
+  188:                 Write-JsonResponse -Stream $Stream -StatusCode 404 -Reason "Not Found" -Payload @{ error = "not_found" }
+  189:             }
+  190:             elseif (-not (Test-ConstantTimeEquals -Left ([string]$Headers["Authorization"]) -Right ("Bearer " + [string]$Config.token))) {
+  191:                 Write-JsonResponse -Stream $Stream -StatusCode 401 -Reason "Unauthorized" -Payload @{ error = "unauthorized" }
+  192:             }
+  193:             else {
+  194:                 $Health = Get-WccmHealthPayload
+  195:                 Write-JsonResponse -Stream $Stream -StatusCode 200 -Reason "OK" -Payload $Health
+  196:             }
+  197:             Write-Output "[$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')] $RemoteAddress $Method $Path"
+
+FILE: /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P3_Application_Inventory_Prototype/mac/wccm_mac_dashboard.py
+SHA256: 9e672debd6b593b182493009947eba4b20595de68bec6aa3ed2547c70eb2b906
+LINES: 201 | MATCHES: 19
+
+--- lines 1-21 ---
+    1: #!/usr/bin/env python3
+    2: """WCCM Mac Dashboard - Phase P3 read-only health and visible-app inventory."""
+    3: from __future__ import annotations
+    4: 
+    5: import argparse
+    6: import json
+    7: import threading
+    8: import urllib.error
+    9: import urllib.request
+   10: import webbrowser
+   11: from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+   12: from pathlib import Path
+   13: from typing import Any
+   14: from urllib.parse import urlsplit
+   15: 
+   16: DASHBOARD_VERSION = "0.2.0"
+   17: HTML = r'''<!doctype html>
+   18: <html lang="en">
+   19: <head>
+   20: <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+   21: <title>Windows Control Center for Mac (WCCM)</title>
+
+--- lines 23-60 ---
+   23: :root{color-scheme:light dark;--bg:#f4f6f8;--panel:#fff;--ink:#17202b;--muted:#657181;--line:#d9e0e7;--accent:#245bb5;--good:#157347;--warn:#986400;--bad:#b42318}
+   24: @media(prefers-color-scheme:dark){:root{--bg:#101419;--panel:#1a2028;--ink:#edf2f7;--muted:#a0acba;--line:#303a46;--accent:#8ab4f8}}
+   25: *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+   26: main{max-width:1120px;margin:32px auto;padding:0 20px}.top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}.eyebrow{font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}h1{margin:5px 0 3px;font-size:clamp(25px,4vw,36px);line-height:1.15}p{margin:0;color:var(--muted)}button{border:0;border-radius:10px;padding:10px 14px;background:var(--accent);color:#fff;font-weight:650;cursor:pointer}button:disabled{opacity:.5;c
+   27: @media(max-width:720px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:460px){.grid{grid-template-columns:1fr}}
+   28: </style></head>
+   29: <body><main>
+   30: <div class="top"><div><div class="eyebrow">WCCM · Phase P3</div><h1>Windows Control Center for Mac</h1><p>Windows health and visible-application inventory · Read-only prototype</p></div><div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap"><span id="statusPill" class="pill"><span class="dot"></span><span id="statusText">CHECKING</span></span><button id="refreshButton" onclick="loadStatus()">Refresh status</button></div></div>
+   31: <div class="notice">Control Only mode: the Windows desktop stays on the Windows laptop. This prototype is read-only and does not launch or close applications, restart or shut down Windows, or execute commands. Optional Remote Desktop viewing remains separate and user-initiated.</div>
+   32: <h2 class="section">PC Overview</h2><div class="grid">
+   33: <div class="card"><div class="label">Computer</div><div class="value" id="computerName">—</div><div class="detail" id="ipAddresses">Waiting for agent…</div></div>
+   34: <div class="card"><div class="label">Operating System</div><div class="value" id="osVersion">—</div><div class="detail" id="architecture">—</div></div>
+   35: <div class="card"><div class="label">Uptime</div><div class="value" id="uptime">—</div><div class="detail" id="bootTime">—</div></div>
+   36: <div class="card"><div class="label">Signed-in User</div><div class="value" id="currentUser">—</div><div class="detail">Agent runs in its current Windows user session</div></div>
+   37: <div class="card"><div class="label">Memory</div><div class="value" id="memoryUsed">—</div><div class="detail" id="memoryDetail">—</div></div>
+   38: <div class="card"><div class="label">System Drive</div><div class="value" id="diskFree">—</div><div class="detail" id="diskDetail">—</div></div>
+   39: <div class="card"><div class="label">Remote Desktop Listener</div><div class="value" id="rdpStatus">—</div><div class="detail">Local TCP 3389 check from Windows</div></div>
+   40: <div class="card"><div class="label">Agent</div><div class="value" id="agentVersion">—</div><div class="detail" id="lastUpdated">—</div></div>
+   41: </div>
+   42: <h2 class="section"><span>Visible Applications</span><button id="refreshAppsButton" onclick="loadApps()">Refresh applications</button></h2>
+   43: <div class="panel"><p id="appsStatus" class="substatus">Waiting for application inventory…</p><div id="appsContainer" class="empty">Application inventory has not been loaded yet.</div><p class="detail">Scope: top-level applications with a visible window in the agent's current user session. Window titles are not sent to this Dashboard or displayed. Background processes without a visible window are excluded.</p></div>
+   44: <div class="footer">Local Mac dashboard: 127.0.0.1 · Health auto-refresh: 15 seconds · Applications auto-refresh: 30 seconds · No cloud service is used.</div>
+   45: </main>
+   46: <script>
+   47: function text(id,v){document.getElementById(id).textContent=(v===null||v===undefined||v==="")?"—":String(v)}
+   48: function fmtBytes(n){if(n===null||n===undefined)return "—";let v=n/1073741824;if(v>=1024)return (v/1024).toFixed(2)+" TB";return v.toFixed(1)+" GB"}
+   49: function fmtDuration(s){if(s===null||s===undefined)return "—";s=Math.max(0,Math.floor(s));const d=Math.floor(s/86400);s%=86400;const h=Math.floor(s/3600);s%=3600;const m=Math.floor(s/60);if(d)return `${d}d ${h}h ${m}m`;if(h)return `${h}h ${m}m`;return `${m}m`}
+   50: async function getJson(path){const r=await fetch(path+"?ts="+Date.now(),{cache:"no-store"});const d=await r.json();if(!r.ok||d.status!=="ONLINE")throw new Error(d.message||d.error||"Windows agent is unreachable");return d}
+   51: async function loadStatus(){const btn=document.getElementById("refreshButton");btn.disabled=true;try{const d=await getJson("/api/status");document.getElementById("statusPill").className="pill online";text("statusText",d.uptime_seconds!==null&&d.uptime_seconds<120?"RECENTLY STARTED":"ONLINE");text("computerName",d.computer_name);text("ipAddresses",(d.ipv4_addresses||[]).join(", "));text("osVersion",d.windows_version);text("architecture",d.architecture);text("uptime",fmtDuration(d.uptime_seconds))
+   52: function renderApps(apps){const box=document.getElementById("appsContainer");box.replaceChildren();if(!apps.length){box.className="empty";box.textContent="No visible application windows were reported in the current user session.";return}box.className="";const table=document.createElement("table");table.className="app-table";const thead=document.createElement("thead");const hr=document.createElement("tr");for(const label of ["Application","Process ID","Window state"]){const th=document.createElem
+   53: async function loadApps(){const btn=document.getElementById("refreshAppsButton");btn.disabled=true;try{const d=await getJson("/api/apps");const apps=Array.isArray(d.apps)?d.apps:[];text("appsStatus",`${d.app_count??apps.length} visible application window(s) · Updated ${new Date(d.timestamp_utc).toLocaleTimeString()}`);renderApps(apps)}catch(e){text("appsStatus","Application inventory unavailable: "+e.message);const box=document.getElementById("appsContainer");box.className="empty error";box.text
+   54: loadStatus();loadApps();setInterval(loadStatus,15000);setInterval(loadApps,30000);
+   55: </script></body></html>'''
+   56: 
+   57: 
+   58: def default_config_path() -> Path:
+   59:     """Reuse the accepted P2 local config without copying the secret to P3."""
+   60:     local = Path(__file__).resolve().with_name("config.json")
+
+--- lines 70-94 ---
+   70:         raise FileNotFoundError(
+   71:             f"Configuration file not found: {path}\n"
+   72:             "Complete the accepted P2 configuration setup first. The P3 prototype reuses the P2 local config and does not need the token pasted into chat."
+   73:         )
+   74:     with path.open("r", encoding="utf-8-sig") as handle:
+   75:         config = json.load(handle)
+   76:     host = str(config.get("windows_host", "")).strip()
+   77:     port = int(config.get("windows_port", 8765))
+   78:     token = str(config.get("token", "")).strip()
+   79:     if not host or not token or "REPLACE_WITH_TOKEN" in token:
+   80:         raise ValueError("The local configuration must contain windows_host, windows_port, and the existing Windows agent token.")
+   81:     if not (1 <= port <= 65535):
+   82:         raise ValueError("windows_port is invalid.")
+   83:     return {"windows_host": host, "windows_port": port, "token": token}
+   84: 
+   85: 
+   86: class DashboardServer(ThreadingHTTPServer):
+   87:     daemon_threads = True
+   88:     allow_reuse_address = True
+   89: 
+   90:     def __init__(self, address: tuple[str, int], config: dict[str, Any]):
+   91:         self.config = config
+   92:         super().__init__(address, DashboardHandler)
+   93: 
+   94: 
+
+--- lines 119-144 ---
+  119:         if request_path not in ("/api/status", "/api/apps"):
+  120:             self.send_bytes(404, "application/json; charset=utf-8", b'{"error":"not_found"}')
+  121:             return
+  122: 
+  123:         cfg = self.server.config
+  124:         upstream_path = "/api/health" if request_path == "/api/status" else "/api/apps"
+  125:         url = f"http://{cfg['windows_host']}:{cfg['windows_port']}{upstream_path}"
+  126:         request = urllib.request.Request(
+  127:             url,
+  128:             headers= [REDACTED]
+  129:             method="GET",
+  130:         )
+  131:         try:
+  132:             with urllib.request.urlopen(request, timeout=3.0) as response:
+  133:                 raw = response.read(128 * 1024)
+  134:                 # Reject non-JSON responses instead of passing unexpected content through.
+  135:                 json.loads(raw.decode("utf-8-sig"))
+  136:                 self.send_bytes(response.status, "application/json; charset=utf-8", raw)
+  137:         except urllib.error.HTTPError as exc:
+  138:             body = json.dumps({
+  139:                 "status": "UNREACHABLE",
+  140:                 "error": f"Windows agent returned HTTP {exc.code}",
+  141:                 "apps": [],
+  142:                 "app_count": 0,
+  143:             }).encode("utf-8")
+  144:             self.send_bytes(200, "application/json; charset=utf-8", body)
+
+--- lines 183-197 ---
+  183:     print("WCCM — Windows Control Center for Mac")
+  184:     print(f"Dashboard: {url}")
+  185:     print(f"Windows PC: {config['windows_host']}:{config['windows_port']}")
+  186:     print("Phase P3 is read-only. Only health and visible-app inventory are available.")
+  187:     print("Windows desktop is not displayed. No app/power control actions exist.")
+  188:     print("Press Ctrl+C in this Terminal window to stop the dashboard.")
+  189:     if not args.no_browser:
+  190:         threading.Timer(0.8, lambda: webbrowser.open(url)).start()
+  191:     try:
+  192:         server.serve_forever(poll_interval=0.5)
+  193:     except KeyboardInterrupt:
+  194:         print("\nStopping WCCM P3 dashboard...")
+  195:     finally:
+  196:         server.server_close()
+  197:     return 0
+
+FILE: /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P3_Application_Inventory_Prototype/tests/test_dashboard.py
+SHA256: 253b9a825d7a93c5a48f76ce302988728ece20ddb01a1fc687d8e2bbf5e9607c
+LINES: 154 | MATCHES: 14
+
+--- lines 1-19 ---
+    1: """Local integration tests for the WCCM P3 Mac dashboard using a fake agent."""
+    2: from __future__ import annotations
+    3: 
+    4: import importlib.util
+    5: import json
+    6: import tempfile
+    7: import threading
+    8: import unittest
+    9: from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+   10: from pathlib import Path
+   11: from urllib.error import HTTPError
+   12: from urllib.request import Request, urlopen
+   13: 
+   14: SCRIPT = Path(__file__).resolve().parents[1] / "mac" / "wccm_mac_dashboard.py"
+   15: SPEC = importlib.util.spec_from_file_location("wccm_p3_dashboard", SCRIPT)
+   16: assert SPEC and SPEC.loader
+   17: DASH = importlib.util.module_from_spec(SPEC)
+   18: SPEC.loader.exec_module(DASH)
+   19: 
+
+--- lines 52-66 ---
+   52: 
+   53: 
+   54: class FakeAgentHandler(BaseHTTPRequestHandler):
+   55:     def log_message(self, fmt: str, *args: object) -> None:
+   56:         pass
+   57: 
+   58:     def do_GET(self) -> None:  # noqa: N802
+   59:         if self.headers.get("Authorization") != [REDACTED]
+   60:             self.send_response(401)
+   61:             self.end_headers()
+   62:             return
+   63:         if self.path == "/api/health":
+   64:             body = HEALTH
+   65:         elif self.path == "/api/apps":
+   66:             body = APPS
+
+--- lines 75-99 ---
+   75:         self.end_headers()
+   76:         self.wfile.write(raw)
+   77: 
+   78: 
+   79: class WCCMP3DashboardTests(unittest.TestCase):
+   80:     @classmethod
+   81:     def setUpClass(cls) -> None:
+   82:         cls.agent = ThreadingHTTPServer(("127.0.0.1", 0), FakeAgentHandler)
+   83:         cls.agent_port = cls.agent.server_address[1]
+   84:         cls.agent_thread = threading.Thread(target=cls.agent.serve_forever, daemon=True)
+   85:         cls.agent_thread.start()
+   86:         cls.dashboard = DASH.DashboardServer(
+   87:             ("127.0.0.1", 0),
+   88:             {"windows_host": "127.0.0.1", "windows_port": cls.agent_port, "token": TOKEN},
+   89:         )
+   90:         cls.dashboard_port = cls.dashboard.server_address[1]
+   91:         cls.dashboard_thread = threading.Thread(target=cls.dashboard.serve_forever, daemon=True)
+   92:         cls.dashboard_thread.start()
+   93:         cls.base = f"http://127.0.0.1:{cls.dashboard_port}"
+   94: 
+   95:     @classmethod
+   96:     def tearDownClass(cls) -> None:
+   97:         cls.dashboard.shutdown()
+   98:         cls.dashboard.server_close()
+   99:         cls.agent.shutdown()
+
+--- lines 137-154 ---
+  137:             urlopen(self.base + "/api/anything", timeout=3)
+  138:         self.assertEqual(raised.exception.code, 404)
+  139: 
+  140:     def test_utf8_bom_configuration_is_loaded(self) -> None:
+  141:         with tempfile.TemporaryDirectory() as tmp:
+  142:             path = Path(tmp) / "config.json"
+  143:             path.write_text(
+  144:                 json.dumps({"windows_host": "127.0.0.1", "windows_port": 8765, "token": TOKEN}),
+  145:                 encoding="utf-8-sig",
+  146:             )
+  147:             cfg = DASH.load_config(path)
+  148:             self.assertEqual(cfg["windows_host"], "127.0.0.1")
+  149:             self.assertEqual(cfg["windows_port"], 8765)
+  150:             self.assertEqual(cfg["token"], TOKEN)
+  151: 
+  152: 
+  153: if __name__ == "__main__":
+  154:     unittest.main(verbosity=2)
+
+FILE: /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P3_Application_Inventory_Prototype/windows/Update-WCCM-Agent.ps1
+SHA256: c7d869c28b2cfa7d4d8c3fad260bd00d304071cfa88c49520738a44f3852af40
+LINES: 87 | MATCHES: 5
+
+--- lines 15-45 ---
+   15:         throw "Required file is missing: $Path"
+   16:     }
+   17: }
+   18: 
+   19: try {
+   20:     $Cfg = Get-Content -LiteralPath $ConfigPath -Raw | ConvertFrom-Json
+   21:     if ([string]::IsNullOrWhiteSpace([string]$Cfg.token) -or
+   22:         [int]$Cfg.port -ne 8765 -or
+   23:         [string]::IsNullOrWhiteSpace([string]$Cfg.allowed_prefix)) {
+   24:         throw "The existing WCCM configuration is incomplete. Token was not displayed."
+   25:     }
+   26: } catch {
+   27:     throw "Existing agent configuration could not be validated: $($_.Exception.Message)"
+   28: }
+   29: 
+   30: # Stop rather than overwrite while any process is listening on the agent port.
+   31: $Listener = @(
+   32:     Get-NetTCPConnection -LocalPort 8765 -State Listen -ErrorAction SilentlyContinue
+   33: )
+   34: if ($Listener.Count -gt 0) {
+   35:     throw "TCP 8765 is still listening. In the WCCM Agent console, press Ctrl+C; then rerun this updater."
+   36: }
+   37: 
+   38: # Parse the incoming PowerShell before touching the installed agent.
+   39: $Tokens = $null
+   40: $ParseErrors = $null
+   41: [System.Management.Automation.Language.Parser]::ParseFile(
+   42:     $SourceAgent, [ref]$Tokens, [ref]$ParseErrors
+   43: ) | Out-Null
+   44: if ($ParseErrors.Count -gt 0) {
+   45:     $ParseErrors | Select-Object Message, Line | Format-Table -AutoSize
+
+--- lines 79-87 ---
+   79: 
+   80: Write-Output "Update successful: P3 read-only application inventory installed."
+   81: Write-Output "Existing agent configuration and token preserved."
+   82: Write-Output "Agent syntax verification: PASS"
+   83: Write-Output "Agent configuration SHA-256 unchanged: PASS"
+   84: Write-Output "Backup folder: $BackupDir"
+   85: Write-Output "Start command: $InstalledStart"
+   86: Write-Output "No firewall, Windows service, scheduled task, app-control, or power-action changes were made."
+   87: Write-Output "Next: double-click Start-WCCM-Agent.cmd and keep its console open."
+
+FILE: /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P3_Application_Inventory_Prototype/windows/wccm_windows_agent.ps1
+SHA256: 6b14001b5e4cfaba34183ded0626e9c766c919d44a625fa3080f12d3a753c300
+LINES: 261 | MATCHES: 1
+
+--- lines 231-245 ---
+  231:             }
+  232:             elseif ($Method -ne "GET") {
+  233:                 Write-JsonResponse -Stream $Stream -StatusCode 405 -Reason "Method Not Allowed" -Payload @{ error = "method_not_allowed"; mode = "read_only" }
+  234:             }
+  235:             elseif ($Path -notin @("/api/health", "/api/apps")) {
+  236:                 Write-JsonResponse -Stream $Stream -StatusCode 404 -Reason "Not Found" -Payload @{ error = "not_found" }
+  237:             }
+  238:             elseif (-not (Test-ConstantTimeEquals -Left ([string]$Headers["Authorization"]) -Right ("Bearer " + [string]$Config.token))) {
+  239:                 Write-JsonResponse -Stream $Stream -StatusCode 401 -Reason "Unauthorized" -Payload @{ error = "unauthorized" }
+  240:             }
+  241:             elseif ($Path -eq "/api/health") {
+  242:                 $Health = Get-WccmHealthPayload
+  243:                 Write-JsonResponse -Stream $Stream -StatusCode 200 -Reason "OK" -Payload $Health
+  244:             }
+  245:             elseif ($Path -eq "/api/apps") {
+
+FILE: /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P4_Application_Control_Prototype/mac/wccm_mac_dashboard_p4.py
+SHA256: f3c366ca3092f4dd7ed210ea741fc958426a22ec1427484ff2ff4620a1d77dd1
+LINES: 274 | MATCHES: 21
+
+--- lines 1-21 ---
+    1: #!/usr/bin/env python3
+    2: """WCCM P4 isolated trial dashboard: allowlisted Notepad launch/graceful-close only."""
+    3: from __future__ import annotations
+    4: 
+    5: import argparse
+    6: import json
+    7: import threading
+    8: import urllib.error
+    9: import urllib.request
+   10: import webbrowser
+   11: from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+   12: from pathlib import Path
+   13: from typing import Any
+   14: from urllib.parse import urlsplit
+   15: 
+   16: HTML = r'''<!doctype html>
+   17: <html lang="en">
+   18: <head>
+   19: <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+   20: <title>WCCM P4 · Application Control Trial</title>
+   21: <style>
+
+--- lines 32-67 ---
+   32: <section class="panel"><h2>PC Overview</h2><div class="metrics">
+   33: <div class="metric"><div class="label">Computer</div><div id="computer" class="value">—</div><div id="ips" class="muted">—</div></div>
+   34: <div class="metric"><div class="label">Operating system</div><div id="os" class="value">—</div><div id="arch" class="muted">—</div></div>
+   35: <div class="metric"><div class="label">Uptime</div><div id="uptime" class="value">—</div><div id="boot" class="muted">—</div></div>
+   36: <div class="metric"><div class="label">Signed-in user</div><div id="user" class="value">—</div></div>
+   37: <div class="metric"><div class="label">Memory</div><div id="memory" class="value">—</div><div id="memoryDetail" class="muted">—</div></div>
+   38: <div class="metric"><div class="label">System drive</div><div id="disk" class="value">—</div><div id="diskDetail" class="muted">—</div></div>
+   39: </div><div class="row" style="margin-top:12px"><button id="refreshStatus" type="button">Refresh status</button><span id="lastUpdated" class="muted">—</span></div></section>
+   40: <section class="panel"><h2>P4 Test App · Notepad</h2><p class="muted">Allowlist: <code>notepad</code> only. No arbitrary executable paths, shell commands, or other app IDs are accepted.</p>
+   41: <div class="row"><button id="launchBtn" class="primary" type="button" disabled>Launch test Notepad</button><button id="closeBtn" class="danger" type="button" disabled>Gracefully close WCCM test Notepad</button><button id="refreshTest" type="button">Refresh test-app status</button></div>
+   42: <div id="testState" class="statusmsg">Waiting for Windows agent…</div><div id="actionState" class="statusmsg muted" aria-live="polite"></div>
+   43: </section>
+   44: <section class="panel"><h2>Visible Applications</h2><div class="row"><span id="appsStatus" class="muted">Waiting for application inventory…</span><button id="refreshApps" type="button">Refresh applications</button></div><div id="appsBox" class="empty" style="margin-top:10px">Inventory has not been loaded.</div><p class="muted">Scope: visible top-level application windows in the agent's current user session. Window titles are not sent to or displayed by this dashboard.</p></section>
+   45: <footer>Local Mac dashboard: 127.0.0.1:8768 · Health refresh: 15 seconds · Inventory refresh: 30 seconds · Test-app status refresh: 5 seconds · No cloud service is used.</footer>
+   46: </main>
+   47: <script>
+   48: const $=id=>document.getElementById(id);let online=false;let p4Instance=null;let actionBusy=false;
+   49: function text(id,value){$(id).textContent=value==null||value===""?"—":String(value)}
+   50: function bytes(n){if(n==null)return "—";let x=Number(n);const u=["B","KB","MB","GB","TB"];let i=0;while(x>=1024&&i<u.length-1){x/=1024;i++}return `${x.toFixed(i>1?1:0)} ${u[i]}`}
+   51: function duration(s){if(s==null)return "—";s=Math.max(0,Number(s)||0);let d=Math.floor(s/86400);s%=86400;let h=Math.floor(s/3600);s%=3600;let m=Math.floor(s/60);return `${d?d+"d ":""}${h}h ${m}m`}
+   52: async function api(path,options={}){const r=await fetch(path,{cache:"no-store",...options,headers:{...(options.headers||{})}});let d;try{d=await r.json()}catch{d={error:"invalid_dashboard_response"}}if(!r.ok)throw Object.assign(new Error(d.message||d.error||`HTTP ${r.status}`),{status:r.status,data:d});return d}
+   53: function setOnline(value,message=""){online=!!value;$('pill').textContent=online?"ONLINE":"OFFLINE / UNREACHABLE";$('pill').className="pill "+(online?"online":"offline");$('launchBtn').disabled=!online||actionBusy||!!(p4Instance&&p4Instance.process_id);$('closeBtn').disabled=!online||actionBusy||!p4Instance;text('actionState',message)}
+   54: async function loadStatus(){try{const d=await api('/api/status');if(d.status!=="ONLINE")throw new Error(d.message||d.error||"Windows agent is unreachable");text('computer',d.computer_name);text('ips',(d.ipv4_addresses||[]).join(', '));text('os',d.windows_version);text('arch',d.architecture);text('uptime',duration(d.uptime_seconds));text('boot',d.boot_time_utc?"Booted: "+new Date(d.boot_time_utc).toLocaleString():"Boot time unavailable");text('user',d.current_user);text('memory',d.memory&&d.memor
+   55: function renderApps(apps){const box=$('appsBox');box.replaceChildren();if(!apps.length){box.className='empty';box.textContent='No visible application windows were reported in the current user session.';return}box.className='';const table=document.createElement('table');const thead=document.createElement('thead');const head=document.createElement('tr');for(const x of ['Application','Process ID','Window state']){const th=document.createElement('th');th.textContent=x;head.appendChild(th)}thead.appe
+   56: async function loadApps(){try{const d=await api('/api/apps');if(d.status!=="ONLINE")throw new Error(d.message||d.error||"Windows agent is unreachable");const apps=Array.isArray(d.apps)?d.apps:[];text('appsStatus',`${d.app_count??apps.length} visible application window(s) · Updated ${new Date(d.timestamp_utc).toLocaleTimeString()}`);renderApps(apps)}catch(e){text('appsStatus','Application inventory unavailable: '+e.message);const box=$('appsBox');box.className='empty';box.textContent='Could not l
+   57: async function loadTestApp(){if(!online){p4Instance=null;text('testState','Test-app state unavailable because Windows is offline.');$('closeBtn').disabled=true;return}try{const d=await api('/api/p4/test-app');if(d.status!=="ONLINE")throw new Error(d.message||d.error||"Test-app state unavailable");p4Instance=Array.isArray(d.instances)&&d.instances.length?d.instances[0]:null;text('testState',p4Instance?`WCCM-launched Notepad is active · Process ID ${p4Instance.process_id}. Only this tracked instan
+   58: async function launchApp(){if(!online||actionBusy)return;if(!confirm('Launch one temporary, allowlisted Windows Notepad test instance? The agent will track only this instance for a possible graceful close. Do not enter important content into it.'))return;actionBusy=true;$('launchBtn').disabled=true;$('closeBtn').disabled=true;text('actionState','Sending explicit Notepad launch request…');try{const d=await api('/api/p4/launch',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.s
+   59: async function closeApp(){if(!online||actionBusy||!p4Instance)return;const pid=p4Instance.process_id;if(!confirm(`Request graceful close of only the WCCM-launched test Notepad (PID ${pid})? If Notepad displays its own save/confirmation prompt, handle it on Windows. No force-kill will be used. Continue?`))return;actionBusy=true;$('launchBtn').disabled=true;$('closeBtn').disabled=true;text('actionState','Sending a graceful-close request; no force-kill is available…');try{const d=await api('/api/p4
+   60: $('refreshStatus').addEventListener('click',loadStatus);$('refreshApps').addEventListener('click',loadApps);$('refreshTest').addEventListener('click',loadTestApp);$('launchBtn').addEventListener('click',launchApp);$('closeBtn').addEventListener('click',closeApp);
+   61: loadStatus().then(()=>loadTestApp());loadApps();setInterval(loadStatus,15000);setInterval(loadApps,30000);setInterval(loadTestApp,5000);
+   62: </script></body></html>'''
+   63: 
+   64: 
+   65: def default_config_path() -> Path:
+   66:     here = Path(__file__).resolve()
+   67:     p4_config = here.with_name("config.json")
+
+--- lines 76-100 ---
+   76:     if not path.is_file():
+   77:         raise FileNotFoundError(
+   78:             f"Configuration file not found: {path}. Reuse the existing P2 local configuration; do not paste its token into chat."
+   79:         )
+   80:     with path.open("r", encoding="utf-8-sig") as handle:
+   81:         cfg = json.load(handle)
+   82:     host = str(cfg.get("windows_host", "")).strip()
+   83:     port = int(cfg.get("windows_port", 8765))
+   84:     token = str(cfg.get("token", "")).strip()
+   85:     if not host or not token or "REPLACE_WITH_TOKEN" in token:
+   86:         raise ValueError("The local configuration must contain windows_host, windows_port and the existing token.")
+   87:     if port != 8765:
+   88:         raise ValueError("P4 trial expects the existing WCCM Windows agent port 8765; no port/firewall change is allowed.")
+   89:     return {"windows_host": host, "windows_port": port, "token": token}
+   90: 
+   91: 
+   92: class DashboardServer(ThreadingHTTPServer):
+   93:     daemon_threads = True
+   94:     allow_reuse_address = True
+   95: 
+   96:     def __init__(self, address: tuple[str, int], config: dict[str, Any]):
+   97:         self.config = config
+   98:         super().__init__(address, DashboardHandler)
+   99: 
+  100: 
+
+--- lines 131-150 ---
+  131:             return False
+  132:         return True
+  133: 
+  134:     def _proxy(self, path: str, method: str = "GET", body: dict[str, Any] | None = None) -> None:
+  135:         cfg = self.server.config
+  136:         url = f"http://{cfg['windows_host']}:{cfg['windows_port']}{path}"
+  137:         data = None if body is None else json.dumps(body, separators=(",", ":")).encode("ascii")
+  138:         headers = [REDACTED]
+  139:         if data is not None:
+  140:             headers["Content-Type"] = "application/json"
+  141:         request = urllib.request.Request(url, data=data, headers=headers, method=method)
+  142:         try:
+  143:             with urllib.request.urlopen(request, timeout=5.0) as response:
+  144:                 raw = response.read(128 * 1024)
+  145:                 decoded = json.loads(raw.decode("utf-8-sig"))
+  146:                 # Never relay arbitrary content; only a bounded valid JSON body is returned.
+  147:                 out = json.dumps(decoded, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+  148:                 self.send_bytes(response.status, "application/json; charset=utf-8", out)
+  149:         except urllib.error.HTTPError as exc:
+  150:             try:
+
+FILE: /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P4_Application_Control_Prototype/tests/test_dashboard_p4.py
+SHA256: b3f4d3a58b6f04f710ac5e989d4e3bf748a7892e6c63eacff82f2040318bd841
+LINES: 198 | MATCHES: 13
+
+--- lines 1-15 ---
+    1: import json
+    2: import sys
+    3: import threading
+    4: import unittest
+    5: from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+    6: from pathlib import Path
+    7: from urllib.error import HTTPError
+    8: from urllib.request import Request, urlopen
+    9: 
+   10: PROJECT = Path(__file__).resolve().parents[1]
+   11: sys.path.insert(0, str(PROJECT / "mac"))
+   12: import wccm_mac_dashboard_p4 as dashboard  # noqa: E402
+   13: 
+   14: MOCK_ACTIONS = []
+   15: 
+
+--- lines 26-40 ---
+   26:         self.send_header("Content-Type", "application/json; charset=utf-8")
+   27:         self.send_header("Content-Length", str(len(data)))
+   28:         self.send_header("Connection", "close")
+   29:         self.end_headers()
+   30:         self.wfile.write(data)
+   31: 
+   32:     def authorized(self):
+   33:         return self.headers.get("Authorization") = [REDACTED]
+   34: 
+   35:     def do_GET(self):
+   36:         if not self.authorized():
+   37:             self.send_json(401, {"error": "unauthorized"})
+   38:             return
+   39:         if self.path == "/api/health":
+   40:             self.send_json(200, {
+
+--- lines 80-117 ---
+   80:             self.send_json(404, {"error": "not_found"})
+   81: 
+   82: 
+   83: class WccmP4DashboardTests(unittest.TestCase):
+   84:     @classmethod
+   85:     def setUpClass(cls):
+   86:         MOCK_ACTIONS.clear()
+   87:         cls.agent = ThreadingHTTPServer(("127.0.0.1", 0), FakeWindowsAgentHandler)
+   88:         cls.agent.daemon_threads = True
+   89:         cls.agent_thread = threading.Thread(target=cls.agent.serve_forever, daemon=True)
+   90:         cls.agent_thread.start()
+   91:         config = {
+   92:             "windows_host": "127.0.0.1",
+   93:             "windows_port": cls.agent.server_address[1],
+   94:             "token": "p4-unit-test-token",
+   95:         }
+   96:         cls.dashboard = dashboard.DashboardServer(("127.0.0.1", 0), config)
+   97:         cls.dashboard_thread = threading.Thread(target=cls.dashboard.serve_forever, daemon=True)
+   98:         cls.dashboard_thread.start()
+   99:         cls.base = f"http://127.0.0.1:{cls.dashboard.server_address[1]}"
+  100:         cls.host = f"127.0.0.1:{cls.dashboard.server_address[1]}"
+  101:         cls.origin = cls.base
+  102: 
+  103:     @classmethod
+  104:     def tearDownClass(cls):
+  105:         cls.dashboard.shutdown()
+  106:         cls.dashboard.server_close()
+  107:         cls.agent.shutdown()
+  108:         cls.agent.server_close()
+  109:         cls.dashboard_thread.join(timeout=2)
+  110:         cls.agent_thread.join(timeout=2)
+  111: 
+  112:     def request(self, path, method="GET", body=None, origin=None, host=None):
+  113:         headers = {"Host": host or self.host}
+  114:         data = None
+  115:         if body is not None:
+  116:             data = json.dumps(body).encode("utf-8")
+  117:             headers["Content-Type"] = "application/json"
+
+FILE: /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P4_Application_Control_Prototype/windows/Update-WCCM-Agent-P4.ps1
+SHA256: 72ee90fd0219da73215637c41cb305c6e8324ff7db0e3257a8f20f18ce9e6a84
+LINES: 90 | MATCHES: 11
+
+--- lines 6-77 ---
+    6: $Launcher = Join-Path $InstallDir "Start-WCCM-Agent.cmd"
+    7: $SourceAgent = Join-Path $PSScriptRoot "wccm_windows_agent_p4.ps1"
+    8: $ExpectedP3Hash = "6b14001b5e4cfaba34183ded0626e9c766c919d44a625fa3080f12d3a753c300"
+    9: 
+   10: function Get-FileHashValue([string]$Path) {
+   11:     return (Get-FileHash -LiteralPath $Path -Algorithm SHA256).Hash.ToLowerInvariant()
+   12: }
+   13: function Assert-PowerShellSyntax([string]$Path) {
+   14:     $Tokens = $null
+   15:     $ParseErrors = $null
+   16:     [System.Management.Automation.Language.Parser]::ParseFile($Path, [ref]$Tokens, [ref]$ParseErrors) | Out-Null
+   17:     if ($ParseErrors -and $ParseErrors.Count -gt 0) {
+   18:         $Details = ($ParseErrors | ForEach-Object { $_.Message }) -join "; "
+   19:         throw "PowerShell syntax validation failed: $Details"
+   20:     }
+   21: }
+   22: 
+   23: Write-Host "`n===== WCCM P4 AGENT UPDATE — GUARDED TRIAL =====" -ForegroundColor Cyan
+   24: 
+   25: foreach ($Required in @($InstalledAgent, $ConfigPath, $Launcher, $SourceAgent)) {
+   26:     if (-not (Test-Path -LiteralPath $Required -PathType Leaf)) {
+   27:         throw "STOP: Required file not found: $Required. No installation change made."
+   28:     }
+   29: }
+   30: 
+   31: $ConfigHashBefore = Get-FileHashValue $ConfigPath
+   32: $Config = Get-Content -LiteralPath $ConfigPath -Raw | ConvertFrom-Json
+   33: if ([int]$Config.port -ne 8765) {
+   34:     throw "STOP: Existing agent config is not set to port 8765. No installation change made."
+   35: }
+   36: if ([string]::IsNullOrWhiteSpace([string]$Config.token) -or
+   37:     [string]::IsNullOrWhiteSpace([string]$Config.allowed_prefix)) {
+   38:     throw "STOP: Existing agent config lacks required values. No installation change made."
+   39: }
+   40: 
+   41: $CurrentHash = Get-FileHashValue $InstalledAgent
+   42: if ($CurrentHash -ne $ExpectedP3Hash) {
+   43:     throw "STOP: Installed agent does not match the accepted P3 baseline hash. Expected $ExpectedP3Hash; found $CurrentHash. No installation change made."
+   44: }
+   45: 
+   46: $IncomingHash = Get-FileHashValue $SourceAgent
+   47: Assert-PowerShellSyntax $SourceAgent
+   48: Write-Host "PASS: Incoming PowerShell syntax is valid."
+   49: Write-Host "PASS: Accepted P3 baseline hash confirmed."
+   50: Write-Host "PASS: Existing configuration/token retained; values are not printed."
+   51: 
+   52: $Listener = @(Get-NetTCPConnection -LocalPort 8765 -State Listen -ErrorAction SilentlyContinue)
+   53: if ($Listener.Count -gt 0) {
+   54:     throw "STOP: Port 8765 is still listening. Stop the current WCCM Agent console with Ctrl+C and rerun this updater."
+   55: }
+   56: Write-Host "PASS: Port 8765 is not listening."
+   57: 
+   58: $BackupDir = Join-Path (Join-Path $InstallDir "backups") ("P3_" + (Get-Date -Format "yyyyMMdd_HHmmss"))
+   59: New-Item -ItemType Directory -Path $BackupDir -Force | Out-Null
+   60: Copy-Item -LiteralPath $InstalledAgent -Destination (Join-Path $BackupDir "wccm_windows_agent.ps1")
+   61: Copy-Item -LiteralPath $Launcher -Destination (Join-Path $BackupDir "Start-WCCM-Agent.cmd")
+   62: $BackupHash = Get-FileHashValue (Join-Path $BackupDir "wccm_windows_agent.ps1")
+   63: if ($BackupHash -ne $ExpectedP3Hash) {
+   64:     throw "STOP: The P3 backup did not match the expected baseline. No installed agent change made."
+   65: }
+   66: Write-Host "PASS: P3 rollback backup created and verified."
+   67: 
+   68: try {
+   69:     Copy-Item -LiteralPath $SourceAgent -Destination $InstalledAgent -Force
+   70:     Assert-PowerShellSyntax $InstalledAgent
+   71:     $InstalledHash = Get-FileHashValue $InstalledAgent
+   72:     if ($InstalledHash -ne $IncomingHash) { throw "Installed P4 agent SHA-256 differs from the staged script." }
+   73:     $ConfigHashAfter = Get-FileHashValue $ConfigPath
+   74:     if ($ConfigHashAfter -ne $ConfigHashBefore) { throw "Existing agent configuration SHA-256 changed unexpectedly." }
+   75:     Write-Host "PASS: P4 agent installed and its SHA-256 verified."
+   76:     Write-Host "PASS: Existing configuration SHA-256 is unchanged."
+   77: } catch {
+
+--- lines 80-90 ---
+   80:     if ((Get-FileHashValue $InstalledAgent) -ne $ExpectedP3Hash) {
+   81:         throw "CRITICAL: Automatic rollback hash check failed. Keep the agent stopped and use backup folder: $BackupDir"
+   82:     }
+   83:     throw "P4 update was rolled back to the accepted P3 agent. Details: $($_.Exception.Message)"
+   84: }
+   85: 
+   86: Write-Host "`n===== UPDATE SUCCESSFUL =====" -ForegroundColor Green
+   87: Write-Host "WCCM P4 trial agent installed. No firewall/service/scheduled-task changes were made."
+   88: Write-Host "Rollback backup: $BackupDir"
+   89: Write-Host "Next: launch $Launcher and keep its console open, then start the P4 Mac dashboard on port 8768."
+   90: Write-Host "Only the allowlisted Notepad test instance started by this running P4 agent can receive graceful close requests."
+
+FILE: /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P4_Application_Control_Prototype/windows/wccm_windows_agent_p4.ps1
+SHA256: d6f61cdd64faa7fba50cd9a2d8f747765349cb8cb100c8c5a9b1d438a9dfac21
+LINES: 398 | MATCHES: 2
+
+--- lines 258-272 ---
+  258:     Write-Error "WCCM P4 agent could not bind to TCP ${Port}: $($_.Exception.Message)"
+  259:     exit 3
+  260: }
+  261: 
+  262: Write-Output "WCCM Windows Agent - Phase P4 trial (health, inventory, allowlisted Notepad launch/graceful close)"
+  263: Write-Output "Listening on TCP $Port; permitted IPv4 prefix: $($Config.allowed_prefix)*"
+  264: Write-Output "Allowed control scope: launch Notepad; graceful-close only a Notepad instance launched by this agent run."
+  265: Write-Output "No arbitrary commands, other-app close, force-kill, power actions, firewall changes, or scheduled tasks."
+  266: Write-Output "Keep this console open during testing. Press Ctrl+C to stop."
+  267: 
+  268: $GetPaths = @("/api/health", "/api/apps", "/api/p4/test-app")
+  269: $PostPaths = @("/api/p4/launch", "/api/p4/close")
+  270: $KnownPaths = @($GetPaths + $PostPaths)
+  271: 
+  272: try {
+
+--- lines 316-330 ---
+  316:                 Write-JsonResponse -Stream $Stream -StatusCode 405 -Reason "Method Not Allowed" -Payload @{ error = "method_not_allowed" }
+  317:                 continue
+  318:             }
+  319:             if (($Method -eq "GET" -and $Path -in $PostPaths) -or ($Method -eq "POST" -and $Path -in $GetPaths)) {
+  320:                 Write-JsonResponse -Stream $Stream -StatusCode 405 -Reason "Method Not Allowed" -Payload @{ error = "method_not_allowed"; path = $Path }
+  321:                 continue
+  322:             }
+  323:             if (-not (Test-ConstantTimeEquals -Left ([string]$Headers["Authorization"]) -Right ("Bearer " + [string]$Config.token))) {
+  324:                 Write-JsonResponse -Stream $Stream -StatusCode 401 -Reason "Unauthorized" -Payload @{ error = "unauthorized" }
+  325:                 continue
+  326:             }
+  327: 
+  328:             if ($Method -eq "GET" -and $Path -eq "/api/health") {
+  329:                 Write-JsonResponse -Stream $Stream -StatusCode 200 -Reason "OK" -Payload (Get-WccmHealthPayload)
+  330:                 continue
+
+FILE: /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P5_Save_Review_Prototype/mac/wccm_mac_dashboard_p5.py
+SHA256: 68c3ec3e8c53ba7efe47a6967849960592390f1f6421133910253acdd110126c
+LINES: 330 | MATCHES: 15
+
+--- lines 2-23 ---
+    2: """WCCM P5 Save Review prototype. Local-only; no Windows control or power actions."""
+    3: from __future__ import annotations
+    4: 
+    5: import argparse
+    6: import hashlib
+    7: import json
+    8: import os
+    9: import threading
+   10: import urllib.error
+   11: import urllib.request
+   12: from datetime import datetime, timezone
+   13: from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+   14: from pathlib import Path
+   15: from typing import Any
+   16: from urllib.parse import urlsplit
+   17: 
+   18: APP_NAME = "WCCM P5 Save Review Prototype"
+   19: HOST = "127.0.0.1"
+   20: PORT = 8769
+   21: DEFAULT_P4_BASE = "http://127.0.0.1:8768"
+   22: ALLOWED_REVIEW_STATES = {"saved", "no_unsaved_work", "needs_review"}
+   23: MAX_BODY_BYTES = 64 * 1024
+
+--- lines 34-65 ---
+   34: main{max-width:1100px;margin:24px auto;padding:0 16px 40px}.top,.panel,.notice{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:14px}.top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}.eyebrow{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:750}h1{font-size:27px;margin:3px 0 5px}h2{font-size:19px;margin:0 0 12px}p{margin:6px 0}.muted{font-size:13px;color:var(--muted)}.pill{dis
+   35: .notice{border-left:4px solid var(--warn)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}.metric{border:1px solid var(--line);border-radius:10px;padding:12px;min-width:0}.label{font-size:12px;color:var(--muted);font-weight:700;text-transform:uppercase}.value{font-size:17px;font-weight:750;overflow-wrap:anywhere}button,select{font:inherit;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:9px;padding:9px 12px}button{font-weight
+   36: </style>
+   37: </head>
+   38: <body><main>
+   39: <section class="top"><div><div class="eyebrow">WCCM · Phase P5 prototype</div><h1>Windows Control Center for Mac</h1><p class="muted">Save Review · Manual review of visible running applications</p></div><span id="connection" class="pill offline">CHECKING</span></section>
+   40: <section class="notice"><strong>Safety boundary</strong><p>Windows does not expose a universal, reliable signal that proves every application's work is saved. You must inspect each application yourself and choose a review status. WCCM does not read document contents, inspect window titles, save files automatically, launch/close apps, or restart/shut down Windows.</p><p><b>Needs review</b> is the default for unknown or newly seen applications. Any item left in that state keeps this review incompl
+   41: <section class="panel"><h2>Review readiness</h2><div class="grid"><div class="metric"><div class="label">PC / Agent</div><div id="pc" class="value">—</div><div id="host" class="muted">—</div></div><div class="metric"><div class="label">Visible apps</div><div id="appCount" class="value">—</div><div id="inventoryTime" class="muted">—</div></div><div class="metric"><div class="label">Needs review</div><div id="needsCount" class="value">—</div><div class="muted">Unknown or not yet resolved</div></di
+   42: <section class="panel"><h2>Running applications</h2><p class="muted">Each application starts as Needs review until you choose a state. An application that appears later is treated as a new review item. PIDs distinguish multiple instances where available.</p><div id="apps" class="empty">Waiting for the P4 application inventory…</div></section>
+   43: <footer class="foot">Local Mac dashboard: 127.0.0.1:8769 · Reads current inventory from P4 on 127.0.0.1:8768 · Review records stay in this WCCM project folder · No Windows control or power actions are available.</footer>
+   44: </main>
+   45: <script>
+   46: const $=id=>document.getElementById(id);
+   47: let currentApps=[], savedStates={}, draftStates={}, dirty=false, online=false;
+   48: const labels={needs_review:"Needs review",saved:"Saved",no_unsaved_work:"No unsaved work"};
+   49: function say(s,cls=""){const e=$('message');e.textContent=s;e.className="status "+cls}
+   50: function setButtons(){const ready=online&&currentApps.length>0&&currentApps.every(a=>draftStates[a.key]&&draftStates[a.key]!=="needs_review");$('save').disabled=!online||!dirty;$('cancel').disabled=!dirty;$('readiness').textContent= !online?"UNAVAILABLE":!currentApps.length?"NO APPS TO REVIEW":ready?"REVIEW COMPLETE":"REVIEW INCOMPLETE";$('readiness').className="value "+(ready?"complete":"incomplete");$('needsCount').textContent=String(currentApps.filter(a=>(draftStates[a.key]||"needs_review")==
+   51: function escapeText(x){return String(x??"")}
+   52: function render(){const root=$('apps');root.replaceChildren();if(!online){root.className="empty";root.textContent="Current inventory is unavailable. Do not treat a stale list as current.";return}if(!currentApps.length){root.className="empty";root.textContent="No visible application windows were reported. This is not permission for a power action.";return}root.className="tablewrap";const table=document.createElement("table"),thead=document.createElement("thead"),hr=document.createElement("tr");fo
+   53: async function getJSON(url,options={}){const r=await fetch(url,{cache:"no-store",...options,headers:{...(options.headers||{})}});let d={};try{d=await r.json()}catch{}if(!r.ok)throw new Error(d.message||d.error||`HTTP ${r.status}`);return d}
+   54: async function refreshInventory(discardDraft=false){if(dirty&&!discardDraft&&!confirm("Refreshing will discard unsaved review changes. Continue?"))return;try{say("Loading current Windows inventory…");const [inv,rev]=await Promise.all([getJSON("/api/inventory"),getJSON("/api/reviews")]);if(inv.status!=="ONLINE"||rev.status!=="ONLINE")throw new Error("Windows inventory or local review store is unavailable.");online=true;$('connection').textContent="ONLINE";$('connection').className="pill online";t
+   55: function text(id,v){$(id).textContent=v==null||v===""?"—":String(v)}
+   56: async function saveReviews(){if(!online||!dirty)return;const body={reviews:currentApps.map(a=>({key:a.key,status:draftStates[a.key]||"needs_review"}))};$('save').disabled=true;try{const result=await getJSON("/api/reviews/save",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});savedStates=result.reviews||{};draftStates={};for(const a of currentApps)draftStates[a.key]=savedStates[a.key]?.status||"needs_review";dirty=false;text('savedTime',"Saved locally: "+new 
+   57: function cancelChanges(){draftStates={};for(const a of currentApps)draftStates[a.key]=savedStates[a.key]?.status||"needs_review";dirty=false;render();setButtons();say("Review changes cancelled. The previously saved record is unchanged; no Windows action was sent.","good")}
+   58: $('refresh').addEventListener('click',()=>refreshInventory(false));$('save').addEventListener('click',saveReviews);$('cancel').addEventListener('click',cancelChanges);refreshInventory(true);
+   59: </script></body></html>'''
+   60: 
+   61: 
+   62: def utc_now() -> str:
+   63:     return datetime.now(timezone.utc).isoformat(timespec="seconds")
+   64: 
+   65: 
+
+--- lines 106-142 ---
+  106:         f.flush()
+  107:         os.fsync(f.fileno())
+  108:     os.replace(tmp, path)
+  109: 
+  110: 
+  111: def fetch_p4_json(base_url: str, path: str) -> tuple[int, dict[str, Any]]:
+  112:     url = base_url.rstrip("/") + path
+  113:     req = urllib.request.Request(url, headers={"Cache-Control": "no-store", "Accept": "application/json"})
+  114:     try:
+  115:         with urllib.request.urlopen(req, timeout=5.5) as resp:
+  116:             if resp.status != 200:
+  117:                 return resp.status, {"status": "UNREACHABLE", "error": f"p4_http_{resp.status}"}
+  118:             data = json.loads(resp.read(128 * 1024).decode("utf-8-sig"))
+  119:             if not isinstance(data, dict):
+  120:                 return 502, {"status": "UNREACHABLE", "error": "invalid_p4_response"}
+  121:             return resp.status, data
+  122:     except urllib.error.HTTPError as exc:
+  123:         return exc.code, {"status": "UNREACHABLE", "error": f"p4_http_{exc.code}"}
+  124:     except Exception:
+  125:         return 503, {"status": "UNREACHABLE", "error": "p4_unreachable"}
+  126: 
+  127: 
+  128: class ReviewServer(ThreadingHTTPServer):
+  129:     daemon_threads = True
+  130:     allow_reuse_address = True
+  131: 
+  132:     def __init__(self, address: tuple[str, int], p4_base: str, store_path: Path):
+  133:         self.p4_base = p4_base.rstrip("/")
+  134:         self.store_path = store_path
+  135:         self.lock = threading.RLock()
+  136:         super().__init__(address, ReviewHandler)
+  137: 
+  138: 
+  139: class ReviewHandler(BaseHTTPRequestHandler):
+  140:     server: ReviewServer
+  141:     protocol_version = "HTTP/1.1"
+  142:     server_version = "WCCM-P5-Local"
+
+--- lines 314-328 ---
+  314:     store = Path(args.store).expanduser().resolve() if args.store else default_store
+  315:     server = ReviewServer((HOST, args.port), args.p4_base, store)
+  316:     print(f"{APP_NAME} started at http://{HOST}:{args.port}", flush=True)
+  317:     print(f"P4 upstream: {args.p4_base}; local review file: {store}", flush=True)
+  318:     print("Manual attestations only. No Windows app-control or power-action routes exist.", flush=True)
+  319:     print("Keep this terminal open. Press Ctrl+C to stop only the P5 dashboard.", flush=True)
+  320:     try:
+  321:         server.serve_forever(poll_interval=0.5)
+  322:     except KeyboardInterrupt:
+  323:         print("\nWCCM P5 dashboard stopped.", flush=True)
+  324:     finally:
+  325:         server.server_close()
+  326:     return 0
+  327: 
+  328: 
+
+FILE: /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P5_Save_Review_Prototype/tests/test_dashboard_p5.py
+SHA256: c335bd63fa30711439a578cdcd5fda85b9c67e09973b1787e1bdbdeaa65f41e3
+LINES: 210 | MATCHES: 14
+
+--- lines 1-26 ---
+    1: import json
+    2: import tempfile
+    3: import threading
+    4: import unittest
+    5: from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+    6: from pathlib import Path
+    7: from urllib.error import HTTPError, URLError
+    8: from urllib.request import Request, urlopen
+    9: 
+   10: from mac.wccm_mac_dashboard_p5 import ReviewServer
+   11: 
+   12: 
+   13: class MockP4Handler(BaseHTTPRequestHandler):
+   14:     protocol_version = "HTTP/1.1"
+   15:     status_online = True
+   16:     apps = [
+   17:         {"process_name": "notepad", "process_id": 1001, "visible_window": True},
+   18:         {"process_name": "EXCEL", "process_id": 1002, "visible_window": True},
+   19:         {"process_name": "powershell", "process_id": 1003, "visible_window": True},
+   20:     ]
+   21: 
+   22:     def log_message(self, fmt, *args):
+   23:         return
+   24: 
+   25:     def send(self, status, obj):
+   26:         data = json.dumps(obj).encode()
+
+--- lines 45-87 ---
+   45:         else:
+   46:             self.send(404, {"error": "not_found"})
+   47: 
+   48: 
+   49: class P5DashboardTests(unittest.TestCase):
+   50:     @classmethod
+   51:     def setUpClass(cls):
+   52:         cls.p4 = ThreadingHTTPServer(("127.0.0.1", 0), MockP4Handler)
+   53:         cls.p4_thread = threading.Thread(target=cls.p4.serve_forever, daemon=True)
+   54:         cls.p4_thread.start()
+   55:         cls.p4_base = f"http://127.0.0.1:{cls.p4.server_address[1]}"
+   56: 
+   57:     @classmethod
+   58:     def tearDownClass(cls):
+   59:         cls.p4.shutdown()
+   60:         cls.p4.server_close()
+   61:         cls.p4_thread.join(timeout=2)
+   62: 
+   63:     def setUp(self):
+   64:         self.temp = tempfile.TemporaryDirectory()
+   65:         self.store = Path(self.temp.name) / "state" / "review_state.json"
+   66:         self.server = ReviewServer(("127.0.0.1", 0), self.p4_base, self.store)
+   67:         self.thread = threading.Thread(target=self.server.serve_forever, daemon=True)
+   68:         self.thread.start()
+   69:         self.base = f"http://127.0.0.1:{self.server.server_address[1]}"
+   70: 
+   71:     def tearDown(self):
+   72:         self.server.shutdown()
+   73:         self.server.server_close()
+   74:         self.thread.join(timeout=2)
+   75:         self.temp.cleanup()
+   76:         MockP4Handler.status_online = True
+   77:         MockP4Handler.apps = [
+   78:             {"process_name": "notepad", "process_id": 1001, "visible_window": True},
+   79:             {"process_name": "EXCEL", "process_id": 1002, "visible_window": True},
+   80:             {"process_name": "powershell", "process_id": 1003, "visible_window": True},
+   81:         ]
+   82: 
+   83:     def call(self, path, method="GET", body=None, headers=None, expected=None):
+   84:         h = {"Host": f"127.0.0.1:{self.server.server_address[1]}"}
+   85:         if headers:
+   86:             h.update(headers)
+   87:         data = None if body is None else json.dumps(body).encode()
+
+--- lines 197-210 ---
+  197:         _, data, _ = self.call("/", headers={"Host": "localhost:8769"}, expected=403)
+  198:         self.assertEqual(data["error"], "invalid_host")
+  199: 
+  200:     def test_13_cancel_is_client_side_only(self):
+  201:         source = Path(__file__).resolve().parents[1] / "mac" / "wccm_mac_dashboard_p5.py"
+  202:         text = source.read_text(encoding="utf-8")
+  203:         self.assertIn("function cancelChanges()", text)
+  204:         body = text.split("function cancelChanges()", 1)[1].split("$('refresh')", 1)[0]
+  205:         self.assertNotIn("fetch(", body)
+  206:         self.assertIn("savedStates", body)
+  207: 
+  208: 
+  209: if __name__ == "__main__":
+  210:     unittest.main(verbosity=2)
+
+FILE: /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P6_Cumulative_Dashboard/mac/wccm_mac_dashboard_p6.py
+SHA256: 56019b221dbca6aae65552c9b3e596bd31fb29e836fd76be04a187f3c4745643
+LINES: 2496 | MATCHES: 93
+
+--- lines 2-24 ---
+    2: """WCCM P6.2 cumulative dashboard: P4 + P5 + P6 Force Restart + app control."""
+    3: from __future__ import annotations
+    4: 
+    5: import argparse
+    6: import hashlib
+    7: import json
+    8: import os
+    9: import threading
+   10: import urllib.error
+   11: import urllib.request
+   12: from datetime import datetime, timezone
+   13: from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+   14: from pathlib import Path
+   15: from typing import Any
+   16: from urllib.parse import urlsplit
+   17: import subprocess
+   18: 
+   19: APP_NAME = "WCCM P6.2 Cumulative Dashboard"
+   20: HOST = "127.0.0.1"
+   21: PORT = 8770
+   22: DEFAULT_P4_BASE = "http://127.0.0.1:8768"
+   23: ALLOWED_REVIEW_STATES = {"saved", "no_unsaved_work", "needs_review"}
+   24: MAX_BODY_BYTES = 64 * 1024
+
+--- lines 248-262 ---
+  248: <section class="notice"><strong>Safety boundary</strong><p>P5 Review and application actions are separate. <b>Saved / Keep Open</b> and <b>No unsaved work</b> are your review statements; neither closes an app. <b>Save &amp; Close</b> sends the application's normal Windows close request so its own Save prompt can appear; choose Save on Windows if prompted. WCCM cannot universally save arbitrary application documents.</p><p><b>Close without Saving</b> force-terminates only the selected, identity-v
+  249: <div class="metric"><div class="label">Computer</div><div id="computer" class="value">—</div><div id="ips" class="muted">—</div></div>
+  250: <div class="metric"><div class="label">Operating system</div><div id="os" class="value">—</div><div id="arch" class="muted">—</div></div>
+  251: <div class="metric"><div class="label">Uptime</div><div id="uptime" class="value">—</div><div id="boot" class="muted">—</div></div>
+  252: <div class="metric"><div class="label">Signed-in user</div><div id="user" class="value">—</div></div>
+  253: <div class="metric"><div class="label">Memory</div><div id="memory" class="value">—</div><div id="memoryDetail" class="muted">—</div></div>
+  254: <div class="metric"><div class="label">System drive</div><div id="disk" class="value">—</div><div id="diskDetail" class="muted">—</div></div>
+  255: </div><div class="row" style="margin-top:12px"><button id="refreshStatus" type="button">Refresh status</button><span id="lastUpdated" class="muted">—</span></div></section>
+  256: 
+  257: <section class="panel" id="wccm-security-overview">
+  258:   <div class="wccm-security-head">
+  259:     <div>
+  260:       <div class="wccm-security-kicker">SECURITY OVERVIEW</div>
+  261:       <h2>🛡️ Security Overview</h2>
+  262:       <p class="muted">Windows endpoint security · Read-only summary</p>
+
+--- lines 291-305 ---
+  291: 
+  292:       <div id="wccmLoginCustom" style="display:none;flex-wrap:wrap;gap:8px;margin-top:8px">
+  293:         <label class="muted">From <input id="wccmLoginStart" type="datetime-local"></label>
+  294:         <label class="muted">To <input id="wccmLoginEnd" type="datetime-local"></label>
+  295:       </div>
+  296: 
+  297:       <div id="wccmLoginMetrics" style="margin-top:12px;line-height:1.65">
+  298:         Failed logons (4625): —
+  299:         <br>Interactive successful logons: —
+  300:         <br>Service logons: —
+  301:         <br>System logons: —
+  302:         <br>Other / unclassified successful logons: —
+  303:       </div>
+  304:       <p class="wccm-security-detail" id="wccmLoginDetail">
+  305:         Reading strict real-source Windows authentication events from the local SIEM.
+
+--- lines 324-345 ---
+  324:       <p class="wccm-security-detail">Application, service, startup, and system alerts require verified event integration.</p>
+  325:     </article>
+  326:   </div>
+  327:   <p class="wccm-security-footnote">Defender card: read-only live status when available. Other Security Overview cards remain preview-only; SIEM integration is not connected.</p>
+  328: </section>
+  329: 
+  330: <section class="panel"><h2>📝 P4 Test App · Notepad</h2><p class="muted">Allowlist: <code>notepad</code> only. No arbitrary executable paths, shell commands, or other app IDs are accepted.</p>
+  331: <div class="row"><button id="launchBtn" class="primary" type="button" disabled>Launch test Notepad</button><button id="closeBtn" class="danger" type="button" disabled>Gracefully close WCCM test Notepad</button><button id="refreshTest" type="button">Refresh test-app status</button></div>
+  332: <div id="testState" class="statusmsg">Waiting for Windows agent…</div><div id="actionState" class="statusmsg muted" aria-live="polite"></div>
+  333: </section>
+  334: 
+  335: <section class="panel wccm-launcher-panel" id="wccm-launcher-panel">
+  336:   <div class="wccm-launcher-heading">
+  337:     <div><div class="wccm-launcher-kicker">WINDOWS APP LIBRARY</div><h2>🚀 App Launcher</h2><p class="muted">Your Windows Start Menu apps · Click an icon to open on the Windows PC</p></div>
+  338:     <button id="wccm-launcher-refresh" type="button">↻ Refresh Apps</button>
+  339:   </div>
+  340:   <div class="wccm-launcher-tools"><input id="wccm-launcher-search" type="search" placeholder="Find an app…" aria-label="Search Windows apps"><span id="wccm-launcher-status" class="wccm-launcher-status" role="status">Connecting to Windows App Library…</span></div>
+  341:   
+  342: <div class="wccm-launcher-section">
+  343:   <h3 class="wccm-launcher-group-heading">Main App Library</h3>
+  344:   <div id="wccm-launcher-main-grid" class="wccm-launcher-grid">
+  345:     <div class="wccm-launcher-empty">Loading main applications…</div>
+
+--- lines 352-366 ---
+  352:     <div class="wccm-launcher-empty">Checking approved diagnostic shortcuts…</div>
+  353:   </div>
+  354: </details>
+  355: 
+  356:   <p class="muted wccm-launcher-note">Catalogue includes supported Start Menu shortcuts. Some Microsoft Store/UWP apps and background-only utilities may not appear. Launching an app does not close or modify other applications.</p>
+  357: </section>
+  358: 
+  359: <section class="panel"><h2>🪟 Visible Applications</h2><div class="row"><span id="appsStatus" class="muted">Waiting for application inventory…</span><button id="refreshApps" type="button">Refresh applications</button></div><div id="appsBox" class="empty" style="margin-top:10px">Inventory has not been loaded.</div><p class="muted">Scope: visible top-level application windows in the agent's current user session. Window titles are not sent to or displayed by this dashboard.</p></section>
+  360: 
+  361: <section class="panel wccm-rdp-panel" id="wccm-remote-desktop-panel">
+  362:   <h2>Remote Desktop · Microsoft Windows App</h2>
+  363:   <p>Open and control your Windows desktop from this Mac using Microsoft Windows App. This is separate from WCCM Agent controls and does not restart, shut down or hibernate Windows.</p>
+  364:   <div class="wccm-rdp-actions">
+  365:     <button class="primary" type="button" id="wccm-rdp-windowed">Open Windowed · Move to Extended Monitor</button>
+  366:     <button type="button" id="wccm-rdp-single">Open Full Screen · One Display</button>
+
+--- lines 368-383 ---
+  368:   </div>
+  369:   <div id="wccm-rdp-status" class="statusmsg" role="status" aria-live="polite">Windows PC: DESKTOP-8U2AFU4 · 192.168.2.162 · Remote Desktop TCP 3389.</div>
+  370:   <p class="wccm-rdp-note"><b>To use only the external monitor:</b> choose Windowed, move the Windows App session window to your external monitor, then use the green Full Screen control (or Control–Command–F). “All Mac Displays” spans every connected Mac display.</p>
+  371:   <p class= [REDACTED]
+  372: </section>
+  373: 
+  374: <section class="panel"><h2>⚡ P6 · Windows Power Control</h2><p class="muted">Restart and full Shutdown require the current Windows session inventory to be reviewed and saved; both use /f and can lose unsaved work. Hibernate saves the Windows session to disk and powers off without closing applications; the WCCM Agent pauses until Windows resumes.</p><div class="row"><button id="restartWindowsBtn" class="danger" type="button" disabled>Restart Windows PC</button><button id="shutdownWindowsBtn" clas
+  375: <section class="panel"><h2>🛡️ Review readiness</h2><div class="grid"><div class="metric"><div class="label">PC / Agent</div><div id="pc" class="value">—</div><div id="host" class="muted">—</div></div><div class="metric"><div class="label">Visible apps</div><div id="appCount" class="value">—</div><div id="inventoryTime" class="muted">—</div></div><div class="metric"><div class="label">Needs review</div><div id="needsCount" class="value">—</div><div class="muted">Unknown or not yet resolved</div><
+  376: <section class="panel"><h2>🚀 Running applications</h2><p class="muted">Each application starts as Needs review until you choose a state. An application that appears later is treated as a new review item. Process identities include PID and start time.</p><div id="apps" class="empty">Waiting for the P4 application inventory…</div></section><section class="panel"><h2>Recent application actions</h2><p class="muted">Confirmed close actions and pending close verifications are stored locally in this Ma
+  377: 
+  378: <div class="wccm-action-bar" id="wccm-action-bar" aria-label="Dashboard export and help tools">
+  379:   <div class="wccm-action-group">
+  380:     <button class="wccm-action-button" type="button" data-wccm-open="wccm-screenshot-menu" aria-expanded="false"><span class="wccm-action-icon" aria-hidden="true">▣</span> Screenshot</button>
+  381:     <div class="wccm-dropdown" id="wccm-screenshot-menu" role="menu">
+  382:       <strong>Capture this full dashboard as</strong>
+  383:       <button type="button" data-wccm-export="jpg" data-wccm-prefix="WCCM_Screenshot">JPG</button>
+
+--- lines 431-451 ---
+  431:       </div>
+  432: 
+  433:       <h2 id="wccm-guide-start">1. Getting started</h2>
+  434:       <ol>
+  435:         <li>On the Mac, open the WCCM Dashboard at <code>http://127.0.0.1:8770</code>.</li>
+  436:         <li>On Windows, sign in to your normal Windows account. The WCCM Agent runs in that user session and normally starts through the existing <b>WCCM Agent AutoStart</b> task.</li>
+  437:         <li>Wait until the Dashboard shows the PC and Agent as <b>Online</b>. A sleeping or hibernating PC cannot answer requests until it wakes again.</li>
+  438:         <li>Press <b>Refresh status</b> or <b>Refresh applications</b> whenever you need a fresh reading.</li>
+  439:       </ol>
+  440:       <svg class="guide-diagram" viewBox="0 0 900 220" role="img" aria-label="Illustration showing Mac Dashboard communicating with the Windows Agent and Windows applications">
+  441:         <rect x="12" y="12" width="876" height="196" rx="16" fill="#f4f7fc" stroke="#cbd5e1"/>
+  442:         <rect x="42" y="54" width="220" height="112" rx="12" fill="#fff" stroke="#3467bd" stroke-width="2"/><text x="152" y="83" font-size="16" font-weight="700" text-anchor="middle" fill="#172033">Mac Dashboard</text><text x="152" y="109" font-size="12" text-anchor="middle" fill="#475569">Status · Review · Controls</text><text x="152" y="136" font-size="11" text-anchor="middle" fill="#475569">127.0.0.1 : 8770</text>
+  443:         <path d="M275 110 H390" stroke="#3467bd" stroke-width="4" stroke-linecap="round"/><path d="M380 101 L393 110 L380 119" fill="none" stroke="#3467bd" stroke-width="4"/>
+  444:         <rect x="398" y="54" width="190" height="112" rx="12" fill="#fff" stroke="#12805c" stroke-width="2"/><text x="493" y="86" font-size="16" font-weight="700" text-anchor="middle" fill="#172033">Windows Agent</text><text x="493" y="111" font-size="12" text-anchor="middle" fill="#475569">Authenticated requests</text><text x="493" y="136" font-size="11" text-anchor="middle" fill="#475569">TCP 8765</text>
+  445:         <path d="M601 110 H708" stroke="#12805c" stroke-width="4" stroke-linecap="round"/><path d="M698 101 L711 110 L698 119" fill="none" stroke="#12805c" stroke-width="4"/>
+  446:         <rect x="718" y="54" width="142" height="112" rx="12" fill="#fff" stroke="#a66a12" stroke-width="2"/><text x="789" y="86" font-size="15" font-weight="700" text-anchor="middle" fill="#172033">Windows PC</text><text x="789" y="111" font-size="12" text-anchor="middle" fill="#475569">Apps &amp; power</text><text x="789" y="136" font-size="11" text-anchor="middle" fill="#475569">Local session</text>
+  447:       </svg>
+  448:       <p class="guide-small">Illustrative connection diagram, not a live system screenshot. The dashboard does not stream the Windows desktop in Control Only mode.</p>
+  449: 
+  450:       <h2 id="wccm-guide-phases">2. What each project phase does</h2>
+  451:       <div class="guide-grid">
+
+--- lines 457-488 ---
+  457:         <div class="guide-card"><h3>P6 · Windows Power Control</h3><p>Adds confirmed Windows power actions. Restart and full Shutdown require a completed review and explicit confirmation because they can force-close applications.</p></div>
+  458:         <div class="guide-card"><h3>P6.2 · Individual Application Management</h3><p>Allows supported individual apps to be kept open, asked to close normally, or closed without saving after a separate warning and process-identity check. Confirmed actions appear in the local action history.</p></div>
+  459:         <div class="guide-card"><h3>P6.3 · Hibernate</h3><p>Uses Windows Hibernate (S4), which saves the current Windows session to disk and powers the PC down. When you turn the PC back on and sign in, the previous apps and session should return. The Agent reconnects after Windows resumes.</p></div>
+  460:       </div>
+  461: 
+  462:       <h2 id="wccm-guide-review">3. How to complete Save Review</h2>
+  463:       <ol>
+  464:         <li>Refresh the application list so you are reviewing the current set of visible apps.</li>
+  465:         <li>For each app, choose the status that matches what you know: <b>Saved / Keep Open</b>, <b>No unsaved work</b>, or leave it as <b>Needs review</b> until you have checked it.</li>
+  466:         <li>Use <b>Save review record</b> to store the choices. If you change your mind before saving, use <b>Cancel review changes</b>.</li>
+  467:         <li>Restart and Shutdown remain unavailable while any visible app still needs review or the current Windows session has changed.</li>
+  468:       </ol>
+  469:       <div class="guide-callout guide-callout-warning"><b>Important:</b> Save Review is a checklist, not an automatic save feature. It records your statement; it cannot inspect every application's document or guarantee that a file has been saved. Open important apps and save your work yourself.</div>
+  470:       <svg class="guide-diagram" viewBox="0 0 900 160" role="img" aria-label="Illustration of the review workflow">
+  471:         <rect x="12" y="12" width="876" height="136" rx="14" fill="#f4f7fc" stroke="#cbd5e1"/>
+  472:         <g font-family="Arial,sans-serif" text-anchor="middle"><rect x="34" y="47" width="155" height="66" rx="9" fill="#fff" stroke="#3467bd"/><text x="111" y="75" font-size="14" fill="#172033" font-weight="700">Refresh Apps</text><text x="111" y="94" font-size="11" fill="#475569">Get current list</text><path d="M194 80 H238" stroke="#3467bd" stroke-width="3"/><path d="M230 73 L240 80 L230 87" fill="none" stroke="#3467bd" stroke-width="3"/><rect x="246" y="47" width="155" height="66" rx="9" fil
+  473:       </svg>
+  474: 
+  475:       <h2 id="wccm-guide-apps">4. Individual Application Management (P6.2)</h2>
+  476:       <table><thead><tr><th>Choice</th><th>What it means</th><th>What to expect</th></tr></thead><tbody>
+  477:         <tr><td><b>Saved / Keep Open</b></td><td>Leave the app running.</td><td>No close request is sent.</td></tr>
+  478:         <tr><td><b>Save &amp; Close</b></td><td>Ask the app to close normally.</td><td>If the app shows its own Save prompt, review it and choose Save on Windows. WCCM does not invent or auto-save your document.</td></tr>
+  479:         <tr><td><b>Close without Saving</b></td><td>Close the selected app without saving.</td><td>Requires an additional warning/confirmation. Unsaved changes may be lost. The selected process identity is checked before action.</td></tr>
+  480:       </tbody></table>
+  481:       <p>WCCM confirms a close only after it verifies that the original process instance has exited. Recent close actions are retained in the Dashboard's local browser history across refreshes.</p>
+  482: 
+  483:       <h2 id="wccm-guide-power">5. Power Control: Restart, Shutdown and Hibernate</h2>
+  484:       <div class="guide-grid">
+  485:         <div class="guide-card"><h3>Restart</h3><p>Windows restarts. The current review must be complete. This action can force-close remaining applications, so save every document first.</p></div>
+  486:         <div class="guide-card"><h3>Shutdown</h3><p>Windows powers off completely. The current review must be complete. You must physically power the PC on again.</p></div>
+  487:         <div class="guide-card"><h3>Hibernate (S4)</h3><p>Windows saves the current session to disk and powers off. The apps are not deliberately closed. Press the PC Power button to resume and sign in as usual. WCCM Agent status returns after Windows resumes.</p></div>
+  488:       </div>
+
+FILE: /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P6_Cumulative_Dashboard/mac/wccm_mac_dashboard_p6_DEFENDER_READONLY_CANDIDATE.py
+SHA256: 83fc2ea5145febe15873267c38333505080211f04f2bdeb5d6c6c2b964bf597a
+LINES: 2171 | MATCHES: 74
+
+--- lines 2-24 ---
+    2: """WCCM P6.2 cumulative dashboard: P4 + P5 + P6 Force Restart + app control."""
+    3: from __future__ import annotations
+    4: 
+    5: import argparse
+    6: import hashlib
+    7: import json
+    8: import os
+    9: import threading
+   10: import urllib.error
+   11: import urllib.request
+   12: from datetime import datetime, timezone
+   13: from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+   14: from pathlib import Path
+   15: from typing import Any
+   16: from urllib.parse import urlsplit
+   17: import subprocess
+   18: 
+   19: APP_NAME = "WCCM P6.2 Cumulative Dashboard"
+   20: HOST = "127.0.0.1"
+   21: PORT = 8770
+   22: DEFAULT_P4_BASE = "http://127.0.0.1:8768"
+   23: ALLOWED_REVIEW_STATES = {"saved", "no_unsaved_work", "needs_review"}
+   24: MAX_BODY_BYTES = 64 * 1024
+
+--- lines 248-262 ---
+  248: <section class="notice"><strong>Safety boundary</strong><p>P5 Review and application actions are separate. <b>Saved / Keep Open</b> and <b>No unsaved work</b> are your review statements; neither closes an app. <b>Save &amp; Close</b> sends the application's normal Windows close request so its own Save prompt can appear; choose Save on Windows if prompted. WCCM cannot universally save arbitrary application documents.</p><p><b>Close without Saving</b> force-terminates only the selected, identity-v
+  249: <div class="metric"><div class="label">Computer</div><div id="computer" class="value">—</div><div id="ips" class="muted">—</div></div>
+  250: <div class="metric"><div class="label">Operating system</div><div id="os" class="value">—</div><div id="arch" class="muted">—</div></div>
+  251: <div class="metric"><div class="label">Uptime</div><div id="uptime" class="value">—</div><div id="boot" class="muted">—</div></div>
+  252: <div class="metric"><div class="label">Signed-in user</div><div id="user" class="value">—</div></div>
+  253: <div class="metric"><div class="label">Memory</div><div id="memory" class="value">—</div><div id="memoryDetail" class="muted">—</div></div>
+  254: <div class="metric"><div class="label">System drive</div><div id="disk" class="value">—</div><div id="diskDetail" class="muted">—</div></div>
+  255: </div><div class="row" style="margin-top:12px"><button id="refreshStatus" type="button">Refresh status</button><span id="lastUpdated" class="muted">—</span></div></section>
+  256: 
+  257: <section class="panel" id="wccm-security-overview">
+  258:   <div class="wccm-security-head">
+  259:     <div>
+  260:       <div class="wccm-security-kicker">SECURITY OVERVIEW</div>
+  261:       <h2>🛡️ Security Overview</h2>
+  262:       <p class="muted">Windows endpoint security · Read-only summary</p>
+
+--- lines 294-315 ---
+  294:       <p class="wccm-security-detail">Application, service, startup, and system alerts require verified event integration.</p>
+  295:     </article>
+  296:   </div>
+  297:   <p class="wccm-security-footnote">Defender card: read-only live status when available. Other Security Overview cards remain preview-only; SIEM integration is not connected.</p>
+  298: </section>
+  299: 
+  300: <section class="panel"><h2>📝 P4 Test App · Notepad</h2><p class="muted">Allowlist: <code>notepad</code> only. No arbitrary executable paths, shell commands, or other app IDs are accepted.</p>
+  301: <div class="row"><button id="launchBtn" class="primary" type="button" disabled>Launch test Notepad</button><button id="closeBtn" class="danger" type="button" disabled>Gracefully close WCCM test Notepad</button><button id="refreshTest" type="button">Refresh test-app status</button></div>
+  302: <div id="testState" class="statusmsg">Waiting for Windows agent…</div><div id="actionState" class="statusmsg muted" aria-live="polite"></div>
+  303: </section>
+  304: 
+  305: <section class="panel wccm-launcher-panel" id="wccm-launcher-panel">
+  306:   <div class="wccm-launcher-heading">
+  307:     <div><div class="wccm-launcher-kicker">WINDOWS APP LIBRARY</div><h2>🚀 App Launcher</h2><p class="muted">Your Windows Start Menu apps · Click an icon to open on the Windows PC</p></div>
+  308:     <button id="wccm-launcher-refresh" type="button">↻ Refresh Apps</button>
+  309:   </div>
+  310:   <div class="wccm-launcher-tools"><input id="wccm-launcher-search" type="search" placeholder="Find an app…" aria-label="Search Windows apps"><span id="wccm-launcher-status" class="wccm-launcher-status" role="status">Connecting to Windows App Library…</span></div>
+  311:   
+  312: <div class="wccm-launcher-section">
+  313:   <h3 class="wccm-launcher-group-heading">Main App Library</h3>
+  314:   <div id="wccm-launcher-main-grid" class="wccm-launcher-grid">
+  315:     <div class="wccm-launcher-empty">Loading main applications…</div>
+
+--- lines 322-336 ---
+  322:     <div class="wccm-launcher-empty">Checking approved diagnostic shortcuts…</div>
+  323:   </div>
+  324: </details>
+  325: 
+  326:   <p class="muted wccm-launcher-note">Catalogue includes supported Start Menu shortcuts. Some Microsoft Store/UWP apps and background-only utilities may not appear. Launching an app does not close or modify other applications.</p>
+  327: </section>
+  328: 
+  329: <section class="panel"><h2>🪟 Visible Applications</h2><div class="row"><span id="appsStatus" class="muted">Waiting for application inventory…</span><button id="refreshApps" type="button">Refresh applications</button></div><div id="appsBox" class="empty" style="margin-top:10px">Inventory has not been loaded.</div><p class="muted">Scope: visible top-level application windows in the agent's current user session. Window titles are not sent to or displayed by this dashboard.</p></section>
+  330: 
+  331: <section class="panel wccm-rdp-panel" id="wccm-remote-desktop-panel">
+  332:   <h2>Remote Desktop · Microsoft Windows App</h2>
+  333:   <p>Open and control your Windows desktop from this Mac using Microsoft Windows App. This is separate from WCCM Agent controls and does not restart, shut down or hibernate Windows.</p>
+  334:   <div class="wccm-rdp-actions">
+  335:     <button class="primary" type="button" id="wccm-rdp-windowed">Open Windowed · Move to Extended Monitor</button>
+  336:     <button type="button" id="wccm-rdp-single">Open Full Screen · One Display</button>
+
+--- lines 338-353 ---
+  338:   </div>
+  339:   <div id="wccm-rdp-status" class="statusmsg" role="status" aria-live="polite">Windows PC: DESKTOP-8U2AFU4 · 192.168.2.162 · Remote Desktop TCP 3389.</div>
+  340:   <p class="wccm-rdp-note"><b>To use only the external monitor:</b> choose Windowed, move the Windows App session window to your external monitor, then use the green Full Screen control (or Control–Command–F). “All Mac Displays” spans every connected Mac display.</p>
+  341:   <p class= [REDACTED]
+  342: </section>
+  343: 
+  344: <section class="panel"><h2>⚡ P6 · Windows Power Control</h2><p class="muted">Restart and full Shutdown require the current Windows session inventory to be reviewed and saved; both use /f and can lose unsaved work. Hibernate saves the Windows session to disk and powers off without closing applications; the WCCM Agent pauses until Windows resumes.</p><div class="row"><button id="restartWindowsBtn" class="danger" type="button" disabled>Restart Windows PC</button><button id="shutdownWindowsBtn" clas
+  345: <section class="panel"><h2>🛡️ Review readiness</h2><div class="grid"><div class="metric"><div class="label">PC / Agent</div><div id="pc" class="value">—</div><div id="host" class="muted">—</div></div><div class="metric"><div class="label">Visible apps</div><div id="appCount" class="value">—</div><div id="inventoryTime" class="muted">—</div></div><div class="metric"><div class="label">Needs review</div><div id="needsCount" class="value">—</div><div class="muted">Unknown or not yet resolved</div><
+  346: <section class="panel"><h2>🚀 Running applications</h2><p class="muted">Each application starts as Needs review until you choose a state. An application that appears later is treated as a new review item. Process identities include PID and start time.</p><div id="apps" class="empty">Waiting for the P4 application inventory…</div></section><section class="panel"><h2>Recent application actions</h2><p class="muted">Confirmed close actions and pending close verifications are stored locally in this Ma
+  347: 
+  348: <div class="wccm-action-bar" id="wccm-action-bar" aria-label="Dashboard export and help tools">
+  349:   <div class="wccm-action-group">
+  350:     <button class="wccm-action-button" type="button" data-wccm-open="wccm-screenshot-menu" aria-expanded="false"><span class="wccm-action-icon" aria-hidden="true">▣</span> Screenshot</button>
+  351:     <div class="wccm-dropdown" id="wccm-screenshot-menu" role="menu">
+  352:       <strong>Capture this full dashboard as</strong>
+  353:       <button type="button" data-wccm-export="jpg" data-wccm-prefix="WCCM_Screenshot">JPG</button>
+
+--- lines 401-421 ---
+  401:       </div>
+  402: 
+  403:       <h2 id="wccm-guide-start">1. Getting started</h2>
+  404:       <ol>
+  405:         <li>On the Mac, open the WCCM Dashboard at <code>http://127.0.0.1:8770</code>.</li>
+  406:         <li>On Windows, sign in to your normal Windows account. The WCCM Agent runs in that user session and normally starts through the existing <b>WCCM Agent AutoStart</b> task.</li>
+  407:         <li>Wait until the Dashboard shows the PC and Agent as <b>Online</b>. A sleeping or hibernating PC cannot answer requests until it wakes again.</li>
+  408:         <li>Press <b>Refresh status</b> or <b>Refresh applications</b> whenever you need a fresh reading.</li>
+  409:       </ol>
+  410:       <svg class="guide-diagram" viewBox="0 0 900 220" role="img" aria-label="Illustration showing Mac Dashboard communicating with the Windows Agent and Windows applications">
+  411:         <rect x="12" y="12" width="876" height="196" rx="16" fill="#f4f7fc" stroke="#cbd5e1"/>
+  412:         <rect x="42" y="54" width="220" height="112" rx="12" fill="#fff" stroke="#3467bd" stroke-width="2"/><text x="152" y="83" font-size="16" font-weight="700" text-anchor="middle" fill="#172033">Mac Dashboard</text><text x="152" y="109" font-size="12" text-anchor="middle" fill="#475569">Status · Review · Controls</text><text x="152" y="136" font-size="11" text-anchor="middle" fill="#475569">127.0.0.1 : 8770</text>
+  413:         <path d="M275 110 H390" stroke="#3467bd" stroke-width="4" stroke-linecap="round"/><path d="M380 101 L393 110 L380 119" fill="none" stroke="#3467bd" stroke-width="4"/>
+  414:         <rect x="398" y="54" width="190" height="112" rx="12" fill="#fff" stroke="#12805c" stroke-width="2"/><text x="493" y="86" font-size="16" font-weight="700" text-anchor="middle" fill="#172033">Windows Agent</text><text x="493" y="111" font-size="12" text-anchor="middle" fill="#475569">Authenticated requests</text><text x="493" y="136" font-size="11" text-anchor="middle" fill="#475569">TCP 8765</text>
+  415:         <path d="M601 110 H708" stroke="#12805c" stroke-width="4" stroke-linecap="round"/><path d="M698 101 L711 110 L698 119" fill="none" stroke="#12805c" stroke-width="4"/>
+  416:         <rect x="718" y="54" width="142" height="112" rx="12" fill="#fff" stroke="#a66a12" stroke-width="2"/><text x="789" y="86" font-size="15" font-weight="700" text-anchor="middle" fill="#172033">Windows PC</text><text x="789" y="111" font-size="12" text-anchor="middle" fill="#475569">Apps &amp; power</text><text x="789" y="136" font-size="11" text-anchor="middle" fill="#475569">Local session</text>
+  417:       </svg>
+  418:       <p class="guide-small">Illustrative connection diagram, not a live system screenshot. The dashboard does not stream the Windows desktop in Control Only mode.</p>
+  419: 
+  420:       <h2 id="wccm-guide-phases">2. What each project phase does</h2>
+  421:       <div class="guide-grid">
+
+--- lines 427-458 ---
+  427:         <div class="guide-card"><h3>P6 · Windows Power Control</h3><p>Adds confirmed Windows power actions. Restart and full Shutdown require a completed review and explicit confirmation because they can force-close applications.</p></div>
+  428:         <div class="guide-card"><h3>P6.2 · Individual Application Management</h3><p>Allows supported individual apps to be kept open, asked to close normally, or closed without saving after a separate warning and process-identity check. Confirmed actions appear in the local action history.</p></div>
+  429:         <div class="guide-card"><h3>P6.3 · Hibernate</h3><p>Uses Windows Hibernate (S4), which saves the current Windows session to disk and powers the PC down. When you turn the PC back on and sign in, the previous apps and session should return. The Agent reconnects after Windows resumes.</p></div>
+  430:       </div>
+  431: 
+  432:       <h2 id="wccm-guide-review">3. How to complete Save Review</h2>
+  433:       <ol>
+  434:         <li>Refresh the application list so you are reviewing the current set of visible apps.</li>
+  435:         <li>For each app, choose the status that matches what you know: <b>Saved / Keep Open</b>, <b>No unsaved work</b>, or leave it as <b>Needs review</b> until you have checked it.</li>
+  436:         <li>Use <b>Save review record</b> to store the choices. If you change your mind before saving, use <b>Cancel review changes</b>.</li>
+  437:         <li>Restart and Shutdown remain unavailable while any visible app still needs review or the current Windows session has changed.</li>
+  438:       </ol>
+  439:       <div class="guide-callout guide-callout-warning"><b>Important:</b> Save Review is a checklist, not an automatic save feature. It records your statement; it cannot inspect every application's document or guarantee that a file has been saved. Open important apps and save your work yourself.</div>
+  440:       <svg class="guide-diagram" viewBox="0 0 900 160" role="img" aria-label="Illustration of the review workflow">
+  441:         <rect x="12" y="12" width="876" height="136" rx="14" fill="#f4f7fc" stroke="#cbd5e1"/>
+  442:         <g font-family="Arial,sans-serif" text-anchor="middle"><rect x="34" y="47" width="155" height="66" rx="9" fill="#fff" stroke="#3467bd"/><text x="111" y="75" font-size="14" fill="#172033" font-weight="700">Refresh Apps</text><text x="111" y="94" font-size="11" fill="#475569">Get current list</text><path d="M194 80 H238" stroke="#3467bd" stroke-width="3"/><path d="M230 73 L240 80 L230 87" fill="none" stroke="#3467bd" stroke-width="3"/><rect x="246" y="47" width="155" height="66" rx="9" fil
+  443:       </svg>
+  444: 
+  445:       <h2 id="wccm-guide-apps">4. Individual Application Management (P6.2)</h2>
+  446:       <table><thead><tr><th>Choice</th><th>What it means</th><th>What to expect</th></tr></thead><tbody>
+  447:         <tr><td><b>Saved / Keep Open</b></td><td>Leave the app running.</td><td>No close request is sent.</td></tr>
+  448:         <tr><td><b>Save &amp; Close</b></td><td>Ask the app to close normally.</td><td>If the app shows its own Save prompt, review it and choose Save on Windows. WCCM does not invent or auto-save your document.</td></tr>
+  449:         <tr><td><b>Close without Saving</b></td><td>Close the selected app without saving.</td><td>Requires an additional warning/confirmation. Unsaved changes may be lost. The selected process identity is checked before action.</td></tr>
+  450:       </tbody></table>
+  451:       <p>WCCM confirms a close only after it verifies that the original process instance has exited. Recent close actions are retained in the Dashboard's local browser history across refreshes.</p>
+  452: 
+  453:       <h2 id="wccm-guide-power">5. Power Control: Restart, Shutdown and Hibernate</h2>
+  454:       <div class="guide-grid">
+  455:         <div class="guide-card"><h3>Restart</h3><p>Windows restarts. The current review must be complete. This action can force-close remaining applications, so save every document first.</p></div>
+  456:         <div class="guide-card"><h3>Shutdown</h3><p>Windows powers off completely. The current review must be complete. You must physically power the PC on again.</p></div>
+  457:         <div class="guide-card"><h3>Hibernate (S4)</h3><p>Windows saves the current session to disk and powers off. The apps are not deliberately closed. Press the PC Power button to resume and sign in as usual. WCCM Agent status returns after Windows resumes.</p></div>
+  458:       </div>
+
+--- lines 482-496 ---
+  482:         <tr><td><b>Share</b></td><td>System Share, Copy Image, WhatsApp, Messages, Gmail, Yahoo Mail, Default Mail</td><td>Creates a PNG and opens the chosen destination. For web mail or messaging, attach the downloaded PNG yourself; the browser cannot silently attach a local file to those services.</td></tr>
+  483:         <tr><td><b>User Guide</b></td><td>Open, Print / Save as PDF</td><td>Displays this manual. Use Print / Save as PDF to keep a copy.</td></tr>
+  484:       </tbody></table>
+  485:       <div class="guide-callout"><b>DOC format note:</b> DOC export is a Word-compatible document containing the captured Dashboard image. The browser creates it locally; it is not an editable recreation of every Dashboard control. PDF is prepared through the browser's print dialog—choose <b>Save as PDF</b>.</div>
+  486: 
+  487:       <h2 id="wccm-guide-help">8. Troubleshooting and safe use</h2>
+  488:       <ul>
+  489:         <li><b>Agent Offline:</b> confirm the Windows PC is awake, Windows is signed in, and the existing WCCM Agent AutoStart task/launcher is running. Refresh the Dashboard after the Agent returns.</li>
+  490:         <li><b>After Hibernate:</b> press the physical Power button, sign in to Windows, then wait for the Agent to reconnect. The Mac Dashboard may show Offline while Windows is hibernated.</li>
+  491:         <li><b>Restart/Shutdown unavailable:</b> refresh the visible-app list, complete every review item, and save the review record. A new Windows session requires a fresh review.</li>
+  492:         <li><b>An app does not close:</b> the app may be showing its own Save prompt or may not support a normal close request. Check the Windows screen; do not assume WCCM saved the document.</li>
+  493:         <li><b>Screenshot or PDF does not open:</b> allow pop-ups for the local Dashboard. If PDF is selected, choose Save as PDF in the print window.</li>
+  494:         <li><b>Sharing:</b> if Gmail, Yahoo, WhatsApp or Messages opens, attach the PNG downloaded by WCCM. WCCM does not log in to those services or send a message on your behalf.</li>
+  495:       </ul>
+  496:       <div class="guide-callout"><b>Privacy and safety:</b> Keep the WCCM Agent and Dashboard on your trusted local network. Never share the Agent token or configuration file. Review important work before Restart or Shutdown. Use Close without Saving only when you deliberately accept losing unsaved changes.</div>
+
+FILE: /Users/x/Documents/Personal_Network_Device_Command_Center/app/WCCM/P6_Cumulative_Dashboard/mac/wccm_mac_dashboard_p6_DEFENDER_STAGED_20261101T203239Z.py
+SHA256: 83fc2ea5145febe15873267c38333505080211f04f2bdeb5d6c6c2b964bf597a
+LINES: 2171 | MATCHES: 74
+
+--- lines 2-24 ---
+    2: """WCCM P6.2 cumulative dashboard: P4 + P5 + P6 Force Restart + app control."""
+    3: from __future__ import annotations
+    4: 
+    5: import argparse
+    6: import hashlib
+    7: import json
+    8: import os
+    9: import threading
+   10: import urllib.error
+   11: import urllib.request
+   12: from datetime import datetime, timezone
+   13: from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+   14: from pathlib import Path
+   15: from typing import Any
+   16: from urllib.parse import urlsplit
+   17: import subprocess
+   18: 
+   19: APP_NAME = "WCCM P6.2 Cumulative Dashboard"
+   20: HOST = "127.0.0.1"
+   21: PORT = 8770
+   22: DEFAULT_P4_BASE = "http://127.0.0.1:8768"
+   23: ALLOWED_REVIEW_STATES = {"saved", "no_unsaved_work", "needs_review"}
+   24: MAX_BODY_BYTES = 64 * 1024
+
+--- lines 248-262 ---
+  248: <section class="notice"><strong>Safety boundary</strong><p>P5 Review and application actions are separate. <b>Saved / Keep Open</b> and <b>No unsaved work</b> are your review statements; neither closes an app. <b>Save &amp; Close</b> sends the application's normal Windows close request so its own Save prompt can appear; choose Save on Windows if prompted. WCCM cannot universally save arbitrary application documents.</p><p><b>Close without Saving</b> force-terminates only the selected, identity-v
+  249: <div class="metric"><div class="label">Computer</div><div id="computer" class="value">—</div><div id="ips" class="muted">—</div></div>
+  250: <div class="metric"><div class="label">Operating system</div><div id="os" class="value">—</div><div id="arch" class="muted">—</div></div>
+  251: <div class="metric"><div class="label">Uptime</div><div id="uptime" class="value">—</div><div id="boot" class="muted">—</div></div>
+  252: <div class="metric"><div class="label">Signed-in user</div><div id="user" class="value">—</div></div>
+  253: <div class="metric"><div class="label">Memory</div><div id="memory" class="value">—</div><div id="memoryDetail" class="muted">—</div></div>
+  254: <div class="metric"><div class="label">System drive</div><div id="disk" class="value">—</div><div id="diskDetail" class="muted">—</div></div>
+  255: </div><div class="row" style="margin-top:12px"><button id="refreshStatus" type="button">Refresh status</button><span id="lastUpdated" class="muted">—</span></div></section>
+  256: 
+  257: <section class="panel" id="wccm-security-overview">
+  258:   <div class="wccm-security-head">
+  259:     <div>
+  260:       <div class="wccm-security-kicker">SECURITY OVERVIEW</div>
+  261:       <h2>🛡️ Security Overview</h2>
+  262:       <p class="muted">Windows endpoint security · Read-only summary</p>
+
+--- lines 294-315 ---
+  294:       <p class="wccm-security-detail">Application, service, startup, and system alerts require verified event integration.</p>
+  295:     </article>
+  296:   </div>
+  297:   <p class="wccm-security-footnote">Defender card: read-only live status when available. Other Security Overview cards remain preview-only; SIEM integration is not connected.</p>
+  298: </section>
+  299: 
+  300: <section class="panel"><h2>📝 P4 Test App · Notepad</h2><p class="muted">Allowlist: <code>notepad</code> only. No arbitrary executable paths, shell commands, or other app IDs are accepted.</p>
+  301: <div class="row"><button id="launchBtn" class="primary" type="button" disabled>Launch test Notepad</button><button id="closeBtn" class="danger" type="button" disabled>Gracefully close WCCM test Notepad</button><button id="refreshTest" type="button">Refresh test-app status</button></div>
+  302: <div id="testState" class="statusmsg">Waiting for Windows agent…</div><div id="actionState" class="statusmsg muted" aria-live="polite"></div>
+  303: </section>
+  304: 
+  305: <section class="panel wccm-launcher-panel" id="wccm-launcher-panel">
+  306:   <div class="wccm-launcher-heading">
+  307:     <div><div class="wccm-launcher-kicker">WINDOWS APP LIBRARY</div><h2>🚀 App Launcher</h2><p class="muted">Your Windows Start Menu apps · Click an icon to open on the Windows PC</p></div>
+  308:     <button id="wccm-launcher-refresh" type="button">↻ Refresh Apps</button>
+  309:   </div>
+  310:   <div class="wccm-launcher-tools"><input id="wccm-launcher-search" type="search" placeholder="Find an app…" aria-label="Search Windows apps"><span id="wccm-launcher-status" class="wccm-launcher-status" role="status">Connecting to Windows App Library…</span></div>
+  311:   
+  312: <div class="wccm-launcher-section">
+  313:   <h3 class="wccm-launcher-group-heading">Main App Library</h3>
+  314:   <div id="wccm-launcher-main-grid" class="wccm-launcher-grid">
+  315:     <div class="wccm-launcher-empty">Loading main applications…</div>
+
+--- lines 322-336 ---
+  322:     <div class="wccm-launcher-empty">Checking approved diagnostic shortcuts…</div>
+  323:   </div>
+  324: </details>
+  325: 
+  326:   <p class="muted wccm-launcher-note">Catalogue includes supported Start Menu shortcuts. Some Microsoft Store/UWP apps and background-only utilities may not appear. Launching an app does not close or modify other applications.</p>
+  327: </section>
+  328: 
+  329: <section class="panel"><h2>🪟 Visible Applications</h2><div class="row"><span id="appsStatus" class="muted">Waiting for application inventory…</span><button id="refreshApps" type="button">Refresh applications</button></div><div id="appsBox" class="empty" style="margin-top:10px">Inventory has not been loaded.</div><p class="muted">Scope: visible top-level application windows in the agent's current user session. Window titles are not sent to or displayed by this dashboard.</p></section>
+  330: 
+  331: <section class="panel wccm-rdp-panel" id="wccm-remote-desktop-panel">
+  332:   <h2>Remote Desktop · Microsoft Windows App</h2>
+  333:   <p>Open and control your Windows desktop from this Mac using Microsoft Windows App. This is separate from WCCM Agent controls and does not restart, shut down or hibernate Windows.</p>
+  334:   <div class="wccm-rdp-actions">
+  335:     <button class="primary" type="button" id="wccm-rdp-windowed">Open Windowed · Move to Extended Monitor</button>
+  336:     <button type="button" id="wccm-rdp-single">Open Full Screen · One Display</button>
+
+--- lines 338-353 ---
+  338:   </div>
+  339:   <div id="wccm-rdp-status" class="statusmsg" role="status" aria-live="polite">Windows PC: DESKTOP-8U2AFU4 · 192.168.2.162 · Remote Desktop TCP 3389.</div>
+  340:   <p class="wccm-rdp-note"><b>To use only the external monitor:</b> choose Windowed, move the Windows App session window to your external monitor, then use the green Full Screen control (or Control–Command–F). “All Mac Displays” spans every connected Mac display.</p>
+  341:   <p class= [REDACTED]
+  342: </section>
+  343: 
+  344: <section class="panel"><h2>⚡ P6 · Windows Power Control</h2><p class="muted">Restart and full Shutdown require the current Windows session inventory to be reviewed and saved; both use /f and can lose unsaved work. Hibernate saves the Windows session to disk and powers off without closing applications; the WCCM Agent pauses until Windows resumes.</p><div class="row"><button id="restartWindowsBtn" class="danger" type="button" disabled>Restart Windows PC</button><button id="shutdownWindowsBtn" clas
+  345: <section class="panel"><h2>🛡️ Review readiness</h2><div class="grid"><div class="metric"><div class="label">PC / Agent</div><div id="pc" class="value">—</div><div id="host" class="muted">—</div></div><div class="metric"><div class="label">Visible apps</div><div id="appCount" class="value">—</div><div id="inventoryTime" class="muted">—</div></div><div class="metric"><div class="label">Needs review</div><div id="needsCount" class="value">—</div><div class="muted">Unknown or not yet resolved</div><
+  346: <section class="panel"><h2>🚀 Running applications</h2><p class="muted">Each application starts as Needs review until you choose a state. An application that appears later is treated as a new review item. Process identities include PID and start time.</p><div id="apps" class="empty">Waiting for the P4 application inventory…</div></section><section class="panel"><h2>Recent application actions</h2><p class="muted">Confirmed close actions and pending close verifications are stored locally in this Ma
+  347: 
+  348: <div class="wccm-action-bar" id="wccm-action-bar" aria-label="Dashboard export and help tools">
+  349:   <div class="wccm-action-group">
+  350:     <button class="wccm-action-button" type="button" data-wccm-open="wccm-screenshot-menu" aria-expanded="false"><span class="wccm-action-icon" aria-hidden="true">▣</span> Screenshot</button>
+  351:     <div class="wccm-dropdown" id="wccm-screenshot-menu" role="menu">
+  352:       <strong>Capture this full dashboard as</strong>
+  353:       <button type="button" data-wccm-export="jpg" data-wccm-prefix="WCCM_Screenshot">JPG</button>
+
+--- lines 401-421 ---
+  401:       </div>
+  402: 
+  403:       <h2 id="wccm-guide-start">1. Getting started</h2>
+  404:       <ol>
+  405:         <li>On the Mac, open the WCCM Dashboard at <code>http://127.0.0.1:8770</code>.</li>
+  406:         <li>On Windows, sign in to your normal Windows account. The WCCM Agent runs in that user session and normally starts through the existing <b>WCCM Agent AutoStart</b> task.</li>
+  407:         <li>Wait until the Dashboard shows the PC and Agent as <b>Online</b>. A sleeping or hibernating PC cannot answer requests until it wakes again.</li>
+  408:         <li>Press <b>Refresh status</b> or <b>Refresh applications</b> whenever you need a fresh reading.</li>
+  409:       </ol>
+  410:       <svg class="guide-diagram" viewBox="0 0 900 220" role="img" aria-label="Illustration showing Mac Dashboard communicating with the Windows Agent and Windows applications">
+  411:         <rect x="12" y="12" width="876" height="196" rx="16" fill="#f4f7fc" stroke="#cbd5e1"/>
+  412:         <rect x="42" y="54" width="220" height="112" rx="12" fill="#fff" stroke="#3467bd" stroke-width="2"/><text x="152" y="83" font-size="16" font-weight="700" text-anchor="middle" fill="#172033">Mac Dashboard</text><text x="152" y="109" font-size="12" text-anchor="middle" fill="#475569">Status · Review · Controls</text><text x="152" y="136" font-size="11" text-anchor="middle" fill="#475569">127.0.0.1 : 8770</text>
+  413:         <path d="M275 110 H390" stroke="#3467bd" stroke-width="4" stroke-linecap="round"/><path d="M380 101 L393 110 L380 119" fill="none" stroke="#3467bd" stroke-width="4"/>
+  414:         <rect x="398" y="54" width="190" height="112" rx="12" fill="#fff" stroke="#12805c" stroke-width="2"/><text x="493" y="86" font-size="16" font-weight="700" text-anchor="middle" fill="#172033">Windows Agent</text><text x="493" y="111" font-size="12" text-anchor="middle" fill="#475569">Authenticated requests</text><text x="493" y="136" font-size="11" text-anchor="middle" fill="#475569">TCP 8765</text>
+  415:         <path d="M601 110 H708" stroke="#12805c" stroke-width="4" stroke-linecap="round"/><path d="M698 101 L711 110 L698 119" fill="none" stroke="#12805c" stroke-width="4"/>
+  416:         <rect x="718" y="54" width="142" height="112" rx="12" fill="#fff" stroke="#a66a12" stroke-width="2"/><text x="789" y="86" font-size="15" font-weight="700" text-anchor="middle" fill="#172033">Windows PC</text><text x="789" y="111" font-size="12" text-anchor="middle" fill="#475569">Apps &amp; power</text><text x="789" y="136" font-size="11" text-anchor="middle" fill="#475569">Local session</text>
+  417:       </svg>
+  418:       <p class="guide-small">Illustrative connection diagram, not a live system screenshot. The dashboard does not stream the Windows desktop in Control Only mode.</p>
+  419: 
+  420:       <h2 id="wccm-guide-phases">2. What each project phase does</h2>
+  421:       <div class="guide-grid">
+
+--- lines 427-458 ---
+  427:         <div class="guide-card"><h3>P6 · Windows Power Control</h3><p>Adds confirmed Windows power actions. Restart and full Shutdown require a completed review and explicit confirmation because they can force-close applications.</p></div>
+  428:         <div class="guide-card"><h3>P6.2 · Individual Application Management</h3><p>Allows supported individual apps to be kept open, asked to close normally, or closed without saving after a separate warning and process-identity check. Confirmed actions appear in the local action history.</p></div>
+  429:         <div class="guide-card"><h3>P6.3 · Hibernate</h3><p>Uses Windows Hibernate (S4), which saves the current Windows session to disk and powers the PC down. When you turn the PC back on and sign in, the previous apps and session should return. The Agent reconnects after Windows resumes.</p></div>
+  430:       </div>
+  431: 
+  432:       <h2 id="wccm-guide-review">3. How to complete Save Review</h2>
+  433:       <ol>
+  434:         <li>Refresh the application list so you are reviewing the current set of visible apps.</li>
+  435:         <li>For each app, choose the status that matches what you know: <b>Saved / Keep Open</b>, <b>No unsaved work</b>, or leave it as <b>Needs review</b> until you have checked it.</li>
+  436:         <li>Use <b>Save review record</b> to store the choices. If you change your mind before saving, use <b>Cancel review changes</b>.</li>
+  437:         <li>Restart and Shutdown remain unavailable while any visible app still needs review or the current Windows session has changed.</li>
+  438:       </ol>
+  439:       <div class="guide-callout guide-callout-warning"><b>Important:</b> Save Review is a checklist, not an automatic save feature. It records your statement; it cannot inspect every application's document or guarantee that a file has been saved. Open important apps and save your work yourself.</div>
+  440:       <svg class="guide-diagram" viewBox="0 0 900 160" role="img" aria-label="Illustration of the review workflow">
+  441:         <rect x="12" y="12" width="876" height="136" rx="14" fill="#f4f7fc" stroke="#cbd5e1"/>
+  442:         <g font-family="Arial,sans-serif" text-anchor="middle"><rect x="34" y="47" width="155" height="66" rx="9" fill="#fff" stroke="#3467bd"/><text x="111" y="75" font-size="14" fill="#172033" font-weight="700">Refresh Apps</text><text x="111" y="94" font-size="11" fill="#475569">Get current list</text><path d="M194 80 H238" stroke="#3467bd" stroke-width="3"/><path d="M230 73 L240 80 L230 87" fill="none" stroke="#3467bd" stroke-width="3"/><rect x="246" y="47" width="155" height="66" rx="9" fil
+  443:       </svg>
+[GLOBAL EXCERPT LIMIT REACHED]
+
+SECTION 4 — REVIEW NOTES
+------------------------------------------------------------------------
+* No files were modified.
+* No services or processes were started, stopped, or restarted.
+* No network endpoints were contacted.
+* No .env, Keychain, password store, or credential file was read.
+* JSON/YAML/TOML config contents were deliberately not printed.
+* Review excerpts are keyword-based and may omit unrelated code.
+
+END OF REPORT
