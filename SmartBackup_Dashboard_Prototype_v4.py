@@ -3159,6 +3159,38 @@ class SmartBackupDashboard:
             value = tk.Label(preview_summary, text="—", bg=COLORS["panel"], fg=COLORS["text"], font=(FONT, 10), justify="left", anchor="w", wraplength=235)
             value.pack(anchor="w", fill="x")
             preview_summary_labels[key] = value
+
+        def return_to_dashboard():
+            try:
+                window.grab_release()
+            except tk.TclError:
+                pass
+            window.destroy()
+            try:
+                self.root.deiconify()
+                self.root.lift()
+            except tk.TclError:
+                pass
+
+        def exit_application():
+            try:
+                window.destroy()
+            finally:
+                self.root.destroy()
+
+        navigation_controls = tk.Frame(preview_summary, bg=COLORS["panel"])
+        navigation_controls.pack(side="bottom", fill="x", pady=(12, 0))
+        previous_button = self._action_button(
+            navigation_controls, "MAIN DASHBOARD", return_to_dashboard, False
+        )
+        previous_button.pack(fill="x", pady=(0, 7))
+        exit_button = self._action_button(
+            navigation_controls, "EXIT APP", exit_application, True
+        )
+        exit_button.pack(fill="x")
+        previous_button.configure(state="disabled")
+        exit_button.configure(state="disabled")
+
         tk.Label(table_card, text="BACKUP FILE REVIEW / FILE-BY-FILE ACTIVITY", bg=COLORS["panel"], fg=COLORS["text"], font=(FONT, 14, "bold")).pack(anchor="w", pady=(0, 8))
         tree_frame = tk.Frame(table_card, bg=COLORS["panel"])
         tree_frame.pack(fill="both", expand=True)
@@ -3260,11 +3292,12 @@ class SmartBackupDashboard:
             self._daily_backup_active = False
             try:
                 status_label.configure(text=status)
-                detail_label.configure(text=detail + "\n\nBackup process finished. Click CLOSE to close this window.")
+                detail_label.configure(text=detail + "\n\nBackup process finished. Use MAIN DASHBOARD to return or EXIT APP to close SmartBackup.")
                 cancel_button.destroy()
-                confirm_button.configure(text="CLOSE", state="normal", command=window.destroy)
-                confirm_button.tkraise()
-                window.protocol("WM_DELETE_WINDOW", window.destroy)
+                confirm_button.destroy()
+                previous_button.configure(state="normal")
+                exit_button.configure(state="normal")
+                window.protocol("WM_DELETE_WINDOW", return_to_dashboard)
             except tk.TclError:
                 pass
 
