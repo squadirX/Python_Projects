@@ -3357,6 +3357,7 @@ class SmartBackupDashboard:
                     job["total_ops"] = len(job["files"]) * len(destinations)
                     valid, errors, warnings = [], [], []
                     seen = set()
+                    device_groups = {}
                     mounts = globals().get("WINDOWS_MOUNTS", {})
                     cloud_names = {"OneDrive", "iCloud Drive", "Google Drive", "Dropbox"}
                     source_roots = [path.resolve() for label, path in normalized_sources]
@@ -3403,16 +3404,20 @@ class SmartBackupDashboard:
                                 errors.append(f"{name}: no existing parent folder is available.")
                                 continue
                             free_bytes = shutil.disk_usage(candidate).free
-                            required = job["total_bytes"]
-                            if free_bytes < required:
-                                errors.append(f"{name}: insufficient free space. Available {self._manual_backup_format_size(free_bytes)}, required {self._manual_backup_format_size(required)}.")
-                                continue
                             fd, test_path = tempfile.mkstemp(prefix=".smartbackup_preflight_", dir=str(candidate))
                             os.close(fd)
                             os.remove(test_path)
-                            valid.append((name, target, candidate, os.stat(candidate).st_dev))
+                            device = os.stat(candidate).st_dev
+                            valid.append((name, target, candidate, device))
+                            device_groups.setdefault(device, []).append((name, free_bytes))
                         except Exception as exc:
                             errors.append(f"{name}: {exc}")
+                    for device, entries in device_groups.items():
+                        available = min(item[1] for item in entries)
+                        required = job["total_bytes"] * len(entries)
+                        if available < required:
+                            names = ", ".join(item[0] for item in entries)
+                            errors.append(f"{names}: insufficient free space. Available {self._manual_backup_format_size(available)}, required approximately {self._manual_backup_format_size(required)}.")
                     if errors or not valid:
                         finish("DESTINATION PREFLIGHT FAILED — NO COPY STARTED", "\n".join(errors or ["No valid destination was selected."]))
                         continue
