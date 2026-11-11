@@ -3235,6 +3235,7 @@ class SmartBackupDashboard:
 
         def scan_worker():
             files, dirs, skipped, scan_errors = [], [], 0, []
+            today = time.strftime("%Y-%m-%d", time.localtime())
             try:
                 for label, source_path in normalized_sources:
                     for root, dirnames, filenames in os.walk(source_path, topdown=True, followlinks=False, onerror=lambda exc: scan_errors.append(str(exc))):
@@ -3249,7 +3250,6 @@ class SmartBackupDashboard:
                                 skipped += 1
                             else:
                                 retained.append(dirname)
-                                dirs.append((label, folder.relative_to(source_path).as_posix()))
                         dirnames[:] = retained
                         for filename in filenames:
                             if job["cancel"].is_set():
@@ -3260,7 +3260,32 @@ class SmartBackupDashboard:
                                 if path.is_symlink() or not path.is_file():
                                     skipped += 1
                                     continue
-                                files.append((label, source_path, path.relative_to(source_path).as_posix(), path.stat().st_size))
+
+                                info = path.stat()
+                                modified_today = (
+                                    time.strftime("%Y-%m-%d", time.localtime(info.st_mtime)) == today
+                                )
+
+                                birth_time = getattr(info, "st_birthtime", None)
+                                if birth_time is None:
+                                    birth_time_ns = getattr(info, "st_birthtime_ns", None)
+                                    if birth_time_ns is not None:
+                                        birth_time = birth_time_ns / 1_000_000_000
+
+                                created_today = (
+                                    birth_time is not None
+                                    and time.strftime("%Y-%m-%d", time.localtime(birth_time)) == today
+                                )
+
+                                if not (created_today or modified_today):
+                                    continue
+
+                                files.append((
+                                    label,
+                                    source_path,
+                                    path.relative_to(source_path).as_posix(),
+                                    info.st_size
+                                ))
                             except Exception as exc:
                                 scan_errors.append(f"{path}: {exc}")
                 if scan_errors:
