@@ -3160,14 +3160,19 @@ class SmartBackupDashboard:
             value.pack(anchor="w", fill="x")
             preview_summary_labels[key] = value
         tk.Label(table_card, text="BACKUP FILE REVIEW / FILE-BY-FILE ACTIVITY", bg=COLORS["panel"], fg=COLORS["text"], font=(FONT, 14, "bold")).pack(anchor="w", pady=(0, 8))
-        tree = ttk.Treeview(table_card, columns=("file", "destination", "status"), show="headings", style="Smart.Treeview", height=12)
+        tree_frame = tk.Frame(table_card, bg=COLORS["panel"])
+        tree_frame.pack(fill="both", expand=True)
+        tree = ttk.Treeview(tree_frame, columns=("file", "destination", "status"), show="headings", style="Smart.Treeview", height=12)
         tree.heading("file", text="FILE")
         tree.heading("destination", text="DESTINATION")
         tree.heading("status", text="STATUS")
         tree.column("file", width=420, anchor="w")
         tree.column("destination", width=230, anchor="w")
         tree.column("status", width=150, anchor="center")
-        tree.pack(fill="both", expand=True)
+        tree_scrollbar = ttk.Scrollbar(tree_frame, orient="vertical", command=tree.yview)
+        tree.configure(yscrollcommand=tree_scrollbar.set)
+        tree.pack(side="left", fill="both", expand=True)
+        tree_scrollbar.pack(side="right", fill="y")
 
         status_label = tk.Label(body, text="SCANNING SOURCE FOLDERS...", bg=COLORS["bg"], fg=COLORS["amber"], font=(FONT, 11, "bold"), anchor="w", justify="left", wraplength=950)
         status_label.pack(fill="x", pady=(0, 9))
@@ -3255,7 +3260,7 @@ class SmartBackupDashboard:
             self._daily_backup_active = False
             try:
                 status_label.configure(text=status)
-                detail_label.configure(text=detail + "\n\nBackup process finished. Click EXIT to close this window.")
+                detail_label.configure(text=detail + "\n\nBackup process finished. Click CLOSE to close this window.")
                 cancel_button.destroy()
                 confirm_button.configure(text="CLOSE", state="normal", command=window.destroy)
                 confirm_button.tkraise()
