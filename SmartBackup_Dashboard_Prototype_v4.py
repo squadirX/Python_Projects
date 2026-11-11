@@ -3144,10 +3144,23 @@ class SmartBackupDashboard:
         detail_label = tk.Label(progress_card, text="Scanning Documents and Downloads. No destination files have been copied yet.", bg=COLORS["panel"], fg=COLORS["muted"], font=(FONT, 10), justify="left", wraplength=950)
         detail_label.pack(anchor="w")
 
-        table_card = self._card(body, 12)
-        table_card.pack(fill="both", expand=True, pady=(0, 10))
-        tk.Label(table_card, text="FILE-BY-FILE ACTIVITY", bg=COLORS["panel"], fg=COLORS["text"], font=(FONT, 14, "bold")).pack(anchor="w", pady=(0, 8))
-        tree = ttk.Treeview(table_card, columns=("file", "destination", "status"), show="headings", style="Smart.Treeview", height=8)
+        preview_area = tk.Frame(body, bg=COLORS["bg"])
+        preview_area.pack(fill="both", expand=True, pady=(0, 10))
+        table_card = self._card(preview_area, 12)
+        table_card.pack(side="left", fill="both", expand=True, padx=(0, 10))
+        preview_summary = self._card(preview_area, 12)
+        preview_summary.pack(side="right", fill="y")
+        preview_summary.configure(width=270)
+        preview_summary.pack_propagate(False)
+        tk.Label(preview_summary, text="BACKUP SUMMARY", bg=COLORS["panel"], fg=COLORS["text"], font=(FONT, 13, "bold")).pack(anchor="w", pady=(0, 12))
+        preview_summary_labels = {}
+        for key, heading in (("files", "FILES FOUND"), ("size", "TOTAL SOURCE SIZE"), ("sources", "SOURCE FOLDERS"), ("destinations", "DESTINATIONS"), ("skipped", "SKIPPED ENTRIES")):
+            tk.Label(preview_summary, text=heading, bg=COLORS["panel"], fg=COLORS["muted"], font=(FONT, 9, "bold")).pack(anchor="w", pady=(7, 0))
+            value = tk.Label(preview_summary, text="—", bg=COLORS["panel"], fg=COLORS["text"], font=(FONT, 10), justify="left", anchor="w", wraplength=235)
+            value.pack(anchor="w", fill="x")
+            preview_summary_labels[key] = value
+        tk.Label(table_card, text="BACKUP FILE REVIEW / FILE-BY-FILE ACTIVITY", bg=COLORS["panel"], fg=COLORS["text"], font=(FONT, 14, "bold")).pack(anchor="w", pady=(0, 8))
+        tree = ttk.Treeview(table_card, columns=("file", "destination", "status"), show="headings", style="Smart.Treeview", height=12)
         tree.heading("file", text="FILE")
         tree.heading("destination", text="DESTINATION")
         tree.heading("status", text="STATUS")
@@ -3188,6 +3201,7 @@ class SmartBackupDashboard:
             "detail_label": detail_label,
             "status_label": status_label,
             "tree": tree,
+            "preview_summary_labels": preview_summary_labels,
             "files": [],
             "dirs": [],
             "skipped": 0,
@@ -3195,6 +3209,8 @@ class SmartBackupDashboard:
             "total_ops": 0,
             "validated_destinations": [],
             "started": None,
+            "phase": "scan",
+            "row_ids": {},
         }
 
         def request_cancel():
@@ -3202,15 +3218,29 @@ class SmartBackupDashboard:
                 window.destroy()
                 return
             job["cancel"].set()
+            if job["phase"] == "preview":
+                finish("CANCELLED BEFORE COPY", "You cancelled after reviewing the file list. No destination files were copied.")
+                return
             try:
                 status_label.configure(text="CANCELLATION REQUESTED. Waiting for the current operation to stop...")
             except tk.TclError:
                 pass
 
-        cancel_button = self._action_button(controls, "CANCEL BACKUP", request_cancel, False)
+        def start_copy():
+            if job["finished"] or job["phase"] != "preview":
+                return
+            job["phase"] = "copy"
+            job["started"] = time.monotonic()
+            status_label.configure(text="BACKUP RUNNING — COPYING FILES...")
+            detail_label.configure(text=f"{len(job['files'])} files · {self._manual_backup_format_size(job['total_bytes'])} per destination · {job['total_ops']} destination-file operations")
+            confirm_button.configure(state="disabled", text="BACKUP STARTED")
+            threading.Thread(target=copy_worker, daemon=True, name="SmartBackupDailyCopy").start()
+
+        confirm_button = self._action_button(controls, "CONFIRM BACKUP", start_copy, False)
+        confirm_button.pack(side="right", padx=(0, 8))
+        confirm_button.configure(state="disabled")
+        cancel_button = self._action_button(controls, "CANCEL", request_cancel, False)
         cancel_button.pack(side="right")
-        exit_button = self._action_button(controls, "EXIT", lambda: request_cancel() if not job["finished"] else window.destroy(), False)
-        exit_button.pack(side="right", padx=(0, 8))
         window.protocol("WM_DELETE_WINDOW", request_cancel)
         window.grab_set()
 
@@ -3227,8 +3257,8 @@ class SmartBackupDashboard:
                 status_label.configure(text=status)
                 detail_label.configure(text=detail + "\n\nBackup process finished. Click EXIT to close this window.")
                 cancel_button.destroy()
-                exit_button.configure(command=window.destroy)
-                exit_button.tkraise()
+                confirm_button.configure(text="CLOSE", state="normal", command=window.destroy)
+                confirm_button.tkraise()
                 window.protocol("WM_DELETE_WINDOW", window.destroy)
             except tk.TclError:
                 pass
@@ -3347,7 +3377,7 @@ class SmartBackupDashboard:
                             committed += current_written
                             success += 1
                             processed += 1
-                            job["queue"].put({"type": "file", "file": f"{label}/{relative}", "destination": name, "status": "COPIED", "processed": processed, "success": success, "failed": failed, "total_ops": job["total_ops"]})
+                            job["queue"].put({"type": "file", "file": f"{label}/{relative}", "destination": name, "status": "SUCCESSFUL TRANSFER", "processed": processed, "success": success, "failed": failed, "total_ops": job["total_ops"]})
                         except InterruptedError:
                             temporary.unlink(missing_ok=True)
                             job["cancel"].set()
@@ -3448,19 +3478,35 @@ class SmartBackupDashboard:
                         continue
                     job["validated_destinations"] = valid
                     destination_text = "\n".join(f"{name}: {target}" for name, target, candidate, device in valid)
-                    warning_text = "\n\nWarnings:\n" + "\n".join(warnings) if warnings else ""
+                    warning_text = "\n".join(warnings)
                     source_text = "\n".join(f"{label}: {path}" for label, path in normalized_sources)
-                    confirm = (f"Sources:\n{source_text}\n\nFiles found: {len(job['files'])}\nTotal source size: {self._manual_backup_format_size(job['total_bytes'])}\nDestination count: {len(valid)}\n\nSelected destinations:\n{destination_text}\n\nSymbolic links and unsupported entries skipped: {job['skipped']}{warning_text}\n\nThe destination folder will be created. Existing files will not be overwritten.\n\nStart copying files now?")
-                    if job["cancel"].is_set() or not messagebox.askyesno("Confirm Daily Backup", confirm, parent=window):
-                        finish("CANCELLED BEFORE COPY", "You cancelled at the final confirmation. No destination files were copied.")
-                        continue
-                    job["started"] = time.monotonic()
-                    status_label.configure(text="BACKUP RUNNING — COPYING DOCUMENTS AND DOWNLOADS...")
-                    detail_label.configure(text=f"{len(job['files'])} files · {self._manual_backup_format_size(job['total_bytes'])} per destination · {job['total_ops']} destination-file operations")
-                    threading.Thread(target=copy_worker, daemon=True, name="SmartBackupDailyCopy").start()
+                    preview_summary_labels["files"].configure(text=str(len(job["files"])))
+                    preview_summary_labels["size"].configure(text=self._manual_backup_format_size(job["total_bytes"]))
+                    preview_summary_labels["sources"].configure(text=source_text)
+                    preview_summary_labels["destinations"].configure(text=destination_text)
+                    preview_summary_labels["skipped"].configure(text=str(job["skipped"]))
+                    row_number = 0
+                    for destination_name, target, candidate, device in valid:
+                        for label, source_path, relative, scanned_size in job["files"]:
+                            row_id = f"preview_{row_number}"
+                            row_number += 1
+                            display_file = f"{label}/{relative}"
+                            tree.insert("", "end", iid=row_id, values=(display_file, destination_name, "PENDING"))
+                            job["row_ids"][(destination_name, display_file)] = row_id
+                    job["phase"] = "preview"
+                    status_label.configure(text="BACKUP PREVIEW READY — REVIEW THE COMPLETE FILE LIST BEFORE CONFIRMING.")
+                    detail_label.configure(text=f"{len(job['files'])} files found · {self._manual_backup_format_size(job['total_bytes'])} total source size. No files have been copied yet. Existing files will not be overwritten.")
+                    summary_labels["files"].configure(text=f"0 / {job['total_ops']}")
+                    if warning_text:
+                        detail_label.configure(text=detail_label.cget("text") + "\nWarnings: " + warning_text)
+                    confirm_button.configure(state="normal", text="CONFIRM BACKUP")
+                    cancel_button.configure(text="CANCEL")
                 elif kind == "copy_started":
                     detail_label.configure(text="Daily backup folders created. Copying files...\n" + "\n".join(f"{name}: {path}" for name, path in event["archives"]))
                 elif kind == "progress":
+                    active_row = job["row_ids"].get((event["current_destination"], event["current_file"]))
+                    if active_row:
+                        tree.item(active_row, values=(event["current_file"], event["current_destination"], "COPYING..."))
                     total = event["total_ops"]
                     units = event["units"]
                     percent = min(100.0, (units / total) * 100) if total else 100.0
@@ -3475,10 +3521,9 @@ class SmartBackupDashboard:
                     speed = active_bytes / elapsed / (1024 * 1024)
                     detail_label.configure(text=f"{percent:.1f}% · {self._manual_backup_format_size(active_bytes)} written · {speed:.2f} MB/s · Current: {event['current_file']} → {event['current_destination']}")
                 elif kind == "file":
-                    tree.insert("", "end", values=(event["file"], event["destination"], event["status"]))
-                    children = tree.get_children()
-                    if len(children) > 300:
-                        tree.delete(children[0])
+                    row_id = job["row_ids"].get((event["destination"], event["file"]))
+                    if row_id:
+                        tree.item(row_id, values=(event["file"], event["destination"], event["status"]))
                     summary_labels["files"].configure(text=f"{event['processed']} / {event['total_ops']}")
                 elif kind == "finished":
                     success, failed = event.get("success", 0), event.get("failed", 0)
